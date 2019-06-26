@@ -2,418 +2,357 @@
 <html>
 
 <head>
-  <title>Socket.IO chat</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+	<style type="text/css">
+		canvas {
+			border: 1px solid black;
+		}
+	</style>
+	<title>Socket.IO chat</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-    body {
-      font: 13px Helvetica, Arial;
-    }
+		body {
+			font: 13px Helvetica, Arial;
+		}
 
-    form {
-      background: #000;
-      padding: 3px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
+		form {
+			background: #000;
+			padding: 3px;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
 
-    form input {
-      border: 0;
-      padding: 10px;
-      width: 90%;
-      margin-right: .5%;
-    }
+		form input {
+			border: 0;
+			padding: 10px;
+			width: 90%;
+			margin-right: .5%;
+		}
 
-    form button {
-      width: 9%;
-      background: rgb(130, 224, 255);
-      border: none;
-      padding: 10px;
-    }
+		form button {
+			width: 9%;
+			background: rgb(130, 224, 255);
+			border: none;
+			padding: 10px;
+		}
 
-    #messages {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
+		#messages {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
 
-    #messages li {
-      padding: 5px 10px;
-    }
+		#messages li {
+			padding: 5px 10px;
+		}
 
-    #messages li:nth-child(odd) {
-      background: #eee;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    .heart-wrapper {
-      position: absolute;
-      margin: auto;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      width: 10px;
-      height: 10px;
-      background: #f33;
-      -webkit-animation: pulse 1.4s infinite;
-      -moz-animation: pulse 1.4s infinite;
-      -o-animation: pulse 1.4s infinite;
-      -ms-animation: pulse 1.4s infinite;
-      animation: pulse 1.4s infinite;
-      -webkit-transform: rotate(45deg);
-      -moz-transform: rotate(45deg);
-      -o-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-    }
-
-    .heart-wrapper:after {
-      content: '';
-      width: 10px;
-      height: 10px;
-      position: absolute;
-      top: -50%;
-      background: #f33;
-      border-radius: 50%;
-    }
-
-    .heart-wrapper:before {
-      position: absolute;
-      content: '';
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #f33;
-      left: -50%;
-    }
-
-    .heart-wrapper:hover {
-      cursor: pointer;
-    }
-
-    @-moz-keyframes pulse {
-      0 {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      50% {
-        -webkit-transform: scale(0.8) rotate(45deg);
-        -moz-transform: scale(0.8) rotate(45deg);
-        -o-transform: scale(0.8) rotate(45deg);
-        -ms-transform: scale(0.8) rotate(45deg);
-        transform: scale(0.8) rotate(45deg);
-      }
-      85% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      90% {
-        -webkit-transform: scale(0.95) rotate(45deg);
-        -moz-transform: scale(0.95) rotate(45deg);
-        -o-transform: scale(0.95) rotate(45deg);
-        -ms-transform: scale(0.95) rotate(45deg);
-        transform: scale(0.95) rotate(45deg);
-      }
-      97% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      100% {
-        -webkit-transform: scale(1) rotate(45deg);
-        -moz-transform: scale(1) rotate(45deg);
-        -o-transform: scale(1) rotate(45deg);
-        -ms-transform: scale(1) rotate(45deg);
-        transform: scale(1) rotate(45deg);
-      }
-    }
-
-    @-webkit-keyframes pulse {
-      0 {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      50% {
-        -webkit-transform: scale(0.8) rotate(45deg);
-        -moz-transform: scale(0.8) rotate(45deg);
-        -o-transform: scale(0.8) rotate(45deg);
-        -ms-transform: scale(0.8) rotate(45deg);
-        transform: scale(0.8) rotate(45deg);
-      }
-      85% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      90% {
-        -webkit-transform: scale(0.95) rotate(45deg);
-        -moz-transform: scale(0.95) rotate(45deg);
-        -o-transform: scale(0.95) rotate(45deg);
-        -ms-transform: scale(0.95) rotate(45deg);
-        transform: scale(0.95) rotate(45deg);
-      }
-      97% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      100% {
-        -webkit-transform: scale(1) rotate(45deg);
-        -moz-transform: scale(1) rotate(45deg);
-        -o-transform: scale(1) rotate(45deg);
-        -ms-transform: scale(1) rotate(45deg);
-        transform: scale(1) rotate(45deg);
-      }
-    }
-
-    @-o-keyframes pulse {
-      0 {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      50% {
-        -webkit-transform: scale(0.8) rotate(45deg);
-        -moz-transform: scale(0.8) rotate(45deg);
-        -o-transform: scale(0.8) rotate(45deg);
-        -ms-transform: scale(0.8) rotate(45deg);
-        transform: scale(0.8) rotate(45deg);
-      }
-      85% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      90% {
-        -webkit-transform: scale(0.95) rotate(45deg);
-        -moz-transform: scale(0.95) rotate(45deg);
-        -o-transform: scale(0.95) rotate(45deg);
-        -ms-transform: scale(0.95) rotate(45deg);
-        transform: scale(0.95) rotate(45deg);
-      }
-      97% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      100% {
-        -webkit-transform: scale(1) rotate(45deg);
-        -moz-transform: scale(1) rotate(45deg);
-        -o-transform: scale(1) rotate(45deg);
-        -ms-transform: scale(1) rotate(45deg);
-        transform: scale(1) rotate(45deg);
-      }
-    }
-
-    @keyframes pulse {
-      0 {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      50% {
-        -webkit-transform: scale(0.8) rotate(45deg);
-        -moz-transform: scale(0.8) rotate(45deg);
-        -o-transform: scale(0.8) rotate(45deg);
-        -ms-transform: scale(0.8) rotate(45deg);
-        transform: scale(0.8) rotate(45deg);
-      }
-      85% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      90% {
-        -webkit-transform: scale(0.95) rotate(45deg);
-        -moz-transform: scale(0.95) rotate(45deg);
-        -o-transform: scale(0.95) rotate(45deg);
-        -ms-transform: scale(0.95) rotate(45deg);
-        transform: scale(0.95) rotate(45deg);
-      }
-      97% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-      }
-      100% {
-        -webkit-transform: scale(1) rotate(45deg);
-        -moz-transform: scale(1) rotate(45deg);
-        -o-transform: scale(1) rotate(45deg);
-        -ms-transform: scale(1) rotate(45deg);
-        transform: scale(1) rotate(45deg);
-      }
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css">
+		#messages li:nth-child(odd) {
+			background: #eee;
+		}
+	</style>
 </head>
 
 <body>
-  <ul id="messages"></ul>
-  <span id="Name">Name      :</span><br/>
-  <span id="Speed">Speed     :</span><br/>
-  <span id="Distance">Distance :</span><br/>
-  <span id="R">R :</span><br/>
-  <div id="HR">HR :<span class="heart-wrapper"></span></div>
-  <span id="Time">Time :</span><br/>
 
-  <div id="chart"></div>
-  <form action="">
-    <input id="m" autocomplete="off" /><button>Send</button>
-  </form>
+	<canvas id="tutorial" width="600" height="400"></canvas>
 
+	<ul id="messages"></ul>
+	<span id="Name">Name      :</span><br/>
+	<span id="Speed">Speed     :</span><br/>
+	<span id="Distance">Distance :</span><br/>
+	<span id="R">R :</span><br/>
+	<span id="HR">HR :</span><br/>
+	<span id="Time">Time :</span><br/> ===========================================
 
-  <!-- <script src="http://cdn.pubnub.com/pubnub.min.js"></script> -->
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
-  <script src="http://35.167.221.25:3005/socket.io/socket.io.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<br/>
+	<span id="Name1">Name      :</span><br/>
+	<span id="Speed1">Speed     :</span><br/>
+	<span id="Distance1">Distance :</span><br/>
+	<span id="R1">R :</span><br/>
+	<span id="HR1">HR :</span><br/>
+	<span id="Time1">Time :</span><br/> ===========================================
 
-  <script>
-    $(function () {
-      var socket = io('http://35.167.221.25:3005');
+	<br/>
+	<span id="Name2">Name      :</span><br/>
+	<span id="Speed2">Speed     :</span><br/>
+	<span id="Distance2">Distance :</span><br/>
+	<span id="R2">R :</span><br/>
+	<span id="HR2">HR :</span><br/>
+	<span id="Time2">Time :</span><br/> ===========================================
 
-      // socket.on('onEvent1', function(data){
-      // 		console.log(data);
-      // });
-      //  	socket.on('onTestEcho', function(data){
-      // 		console.log(data);
-      // });
-      socket.on('sys', function (data) {
-        // console.log('sys',data); 一些資訊 ex：加入房間
-      });
-      socket.on('connect', function (data) {
-        console.log("connect");
-        socket.emit('join', { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoic21hcnRjaGlwIiwiaWF0IjoxNTAyOTUyODAyLCJleHAiOjE1MDMwMzkyMDJ9.ABgnyKilBR1Ug4NF0gxlD8GutKD-d07FXBcP2NAMAtM', username: 'smartchip', roomID: '123' });
-      });
-      socket.on('disconnect', function (data) {
-        console.log("disconnect"); // 我自己斷線
-      });
-      socket.on('onWhosHere', function (data) {
-        console.log("onWhosHere :", data); //看誰在房間
-        socket.emit('WhosHere', { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoic21hcnRjaGlwIiwiaWF0IjoxNTAyOTUyODAyLCJleHAiOjE1MDMwMzkyMDJ9.ABgnyKilBR1Ug4NF0gxlD8GutKD-d07FXBcP2NAMAtM', username: 'smartchip', roomID: '123' });
+	<br/>
+	<span id="Name3">Name      :</span><br/>
+	<span id="Speed3">Speed     :</span><br/>
+	<span id="Distance3">Distance :</span><br/>
+	<span id="R3">R :</span><br/>
+	<span id="HR3">HR :</span><br/>
+	<span id="Time3">Time :</span><br/> ===========================================
 
-
-      });
+	<br/>
+	<span id="Name4">Name      :</span><br/>
+	<span id="Speed4">Speed     :</span><br/>
+	<span id="Distance4">Distance :</span><br/>
+	<span id="R4">R :</span><br/>
+	<span id="HR4">HR :</span><br/>
+	<span id="Time4">Time :</span><br/>
 
 
-      socket.on('onSTDuring', function (data) {
-        console.log('onSTDuring', data);
-        for (var key in data) {
-          console.log("key " + key + " has value " + data[key]);
-          if (key == "speed") {
-            document.getElementById("Speed").innerHTML = 'speed : ' + data[key];
-          } else if (key == "username") {
-            document.getElementById("Name").innerHTML = data[key];
-          } else if (key == "dist") {
-            document.getElementById("Distance").innerHTML = 'distance : ' + data[key];
-          } else if (key == "r") {// 阻力
-            document.getElementById("R").innerHTML = 'R : ' + data[key];
-          } else if (key == "time") {
-            document.getElementById("Time").innerHTML = data[key];
-          } else if (key == "hr") {
-            document.getElementById("HR").innerHTML = 'HR : ' + data[key];
-            var chart = c3.generate({
-              data: {
-                columns: [
-                  ['data', data[key]]
-                ],
-                type: 'gauge',
-                // onclick: function (d, i) { console.log("onclick", d, i); },
-                // onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-                // onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-              },
-              gauge: {
-                //        label: {
-                //            format: function(value, ratio) {
-                //                return value;
-                //            },
-                //            show: false // to turn off the min/max labels.
-                //        },
-                min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-                max: 200, // 100 is default
-                //    units: ' %',
-                width: 29 // for adjusting arc thickness
-              },
-              color: {
-                pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
-                threshold: {
-                  //            unit: 'value', // percentage is default
-                  //            max: 200, // 100 is default
-                  values: [50, 100, 150, 200]
-                }
-              },
-              size: {
-                height: 180
-              }
-            });
-          }
-        }
+	<form action="">
+		<input id="m" autocomplete="off" /><button>Send</button>
+	</form>
+	<script src="http://35.167.221.25:3005/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script type="text/javascript">
+		function draw() {
+			var canvas = document.getElementById('tutorial');
+			if (canvas.getContext) {
+				var ctx = canvas.getContext("2d");
 
-        //這邊可以處理所有人的資料 看要去弄排名還是什麼...如果這筆資料要另外再傳給其他的client event也可以提出
+				ctx.fillStyle = "rgb(200,0,0)";
+				ctx.fillRect(10, 10, 55, 50);
 
-      });
+				ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+				ctx.fillRect(30, 30, 55, 50);
 
-      socket.on('onStartSport', function (data) {
-        console.log('onStartSport', data);
-        //這邊可以處理所有人的資料 看要去弄排名還是什麼...如果這筆資料要另外再傳給其他的client event也可以提出
+				console.log("drow");
+			}
+		}
+	</script>
 
-      });
+	<script>
+		$(function () {
+			var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiYW5keTM3NTJAZ21haWwuY29tIiwiaWF0IjoxNTA1MjkxMzc2LCJleHAiOjE1MDUzNzc3NzZ9.MeCbXyqSfcfocW6F-XyNxvozrAy39xUYBIk3BZVIt04';
+			var username = 'andy3752@gmail.com';
+
+			var socket = io('http://35.167.221.25:3005');
+			var socketID;
+			var roomID = '666';
+			var count = 0;
+			socket.on('onEvent1', function (data) {
+				console.log(data);
+			});
+			socket.on('onTestEcho', function (data) {
+				console.log(data);
+			});
+			socket.on('sys', function (data) {
+				console.log('sys', data);
+				var NewArray = new Array();
+				var NewArray = data.split("加入了房间");
+				socketID = NewArray[1];
+				console.log('id : ', socketID);
 
 
 
+			});
+			socket.on('connect', function (data) {
+				console.log("connect");
+				socket.emit('join', { token: token, username: username, roomID: roomID });
+			});
+			socket.on('disconnect', function (data) {
+				console.log("disconnect : ", data);
+			});
+			socket.on('onWhosHere', function (data) {
+				console.log("onWhosHere :", data);
+				socket.emit('WhosHere', { token: token, username: username, roomID: roomID });
+			});
 
 
-      // socket.emit('TestEcho', {});
+			socket.on('onSTDuring', function (data) {
+				// console.log('onSTDuring',data);
 
-      // }); 
+				count++;
+				for (var key in data) {
 
 
 
-      $('form').submit(function () {
-        console.log('submit pressed', $('#m').val());
-        // socket.emit('TestEcho', $('#m').val());
-        socket.emit('StartSport', { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoic21hcnRjaGlwIiwiaWF0IjoxNTAyOTUyODAyLCJleHAiOjE1MDMwMzkyMDJ9.ABgnyKilBR1Ug4NF0gxlD8GutKD-d07FXBcP2NAMAtM', username: 'smartchip', roomID: '123' });
-        $('#m').val('');
-        return false;
-      });
-    });
-  </script>
+					var speed = data['speed'];
+					var username = data['username'];
+					var dist = data['dist'];
+					var r = data['r'];
+					var time = data['time'];
+					var hr = data['hr'];
+					// console.log("username " + username +"," + dist);
+					var y_point = 300;
+
+					var canvas = document.getElementById('tutorial');
+					if (canvas.getContext) {
+						var ctx = canvas.getContext("2d");
+
+						//  ctx.fillStyle = "rgb(200,0,0)";
+						// ctx.fillRect (10, 10, 55, 50);
+
+						// ctx.fillStyle = "rgb(200,0,0)";
+						// ctx.fillRect (30, 30, 55, 50);
+
+
+
+
+						if (username == 'andy3752@smartchip.com.tw') {
+							document.getElementById("Speed").innerHTML = 'speed : ' + speed;
+							document.getElementById("Name").innerHTML = username;
+							document.getElementById("Distance").innerHTML = 'distance : ' + dist;
+							document.getElementById("Time").innerHTML = time;
+							document.getElementById("HR").innerHTML = 'HR : ' + hr;
+							document.getElementById("R").innerHTML = 'R : ' + r;
+
+
+							ctx.clearRect(10, 0, 65, canvas.height);
+
+							ctx.fillStyle = "rgb(200,0,0)";
+							ctx.fillRect(10, y_point - hr, 15, hr);
+
+							ctx.fillStyle = "rgb(0,200,0)";
+							ctx.fillRect(30, y_point - speed, 15, speed);
+
+							ctx.fillStyle = "rgb(0,0,200)";
+							ctx.fillRect(50, y_point - dist, 15, dist);
+						}
+
+						else if (username == 'test01') {
+							document.getElementById("Speed1").innerHTML = 'speed : ' + speed;
+							document.getElementById("Name1").innerHTML = username;
+							document.getElementById("Distance1").innerHTML = 'distance : ' + dist;
+							document.getElementById("Time1").innerHTML = time;
+							document.getElementById("HR1").innerHTML = 'HR : ' + hr;
+							document.getElementById("R1").innerHTML = 'R : ' + r;
+
+							ctx.clearRect(110, 0, 65, canvas.height);
+							ctx.fillStyle = "rgb(200,0,0)";
+							ctx.fillRect(110, y_point - hr, 15, hr);
+
+							ctx.fillStyle = "rgb(0,200,0)";
+							ctx.fillRect(130, y_point - speed, 15, speed);
+
+							ctx.fillStyle = "rgb(0,0,200)";
+							ctx.fillRect(150, y_point - dist, 15, dist);
+
+
+
+						} else if (username == 'test02') {
+							document.getElementById("Speed2").innerHTML = 'speed : ' + speed;
+							document.getElementById("Name2").innerHTML = username;
+							document.getElementById("Distance2").innerHTML = 'distance : ' + dist;
+							document.getElementById("Time2").innerHTML = time;
+							document.getElementById("HR2").innerHTML = 'HR : ' + hr;
+							document.getElementById("R2").innerHTML = 'R : ' + r;
+
+							ctx.clearRect(210, 0, 65, canvas.height);
+							ctx.fillStyle = "rgb(200,0,0)";
+							ctx.fillRect(210, y_point - hr, 15, hr);
+
+							ctx.fillStyle = "rgb(0,200,0)";
+							ctx.fillRect(230, y_point - speed, 15, speed);
+
+							ctx.fillStyle = "rgb(0,0,200)";
+							ctx.fillRect(250, y_point - dist, 15, dist);
+
+						} else if (username == 'test03') {
+							document.getElementById("Speed3").innerHTML = 'speed : ' + speed;
+							document.getElementById("Name3").innerHTML = username;
+							document.getElementById("Distance3").innerHTML = 'distance : ' + dist;
+							document.getElementById("Time3").innerHTML = time;
+							document.getElementById("HR3").innerHTML = 'HR : ' + hr;
+							document.getElementById("R3").innerHTML = 'R : ' + r;
+
+							ctx.clearRect(310, 0, 65, canvas.height);
+							ctx.fillStyle = "rgb(200,0,0)";
+							ctx.fillRect(310, y_point - hr, 15, hr);
+
+							ctx.fillStyle = "rgb(0,200,0)";
+							ctx.fillRect(330, y_point - speed, 15, speed);
+
+							ctx.fillStyle = "rgb(0,0,200)";
+							ctx.fillRect(350, y_point - dist, 15, dist);
+						} else if (username == 'test04') {
+							document.getElementById("Speed4").innerHTML = 'speed : ' + speed;
+							document.getElementById("Name4").innerHTML = username;
+							document.getElementById("Distance4").innerHTML = 'distance : ' + dist;
+							document.getElementById("Time4").innerHTML = time;
+							document.getElementById("HR4").innerHTML = 'HR : ' + hr;
+							document.getElementById("R4").innerHTML = 'R : ' + r;
+
+							ctx.clearRect(410, 0, 65, canvas.height);
+							ctx.fillStyle = "rgb(200,0,0)";
+							ctx.fillRect(410, y_point - hr, 15, hr);
+
+							ctx.fillStyle = "rgb(0,200,0)";
+							ctx.fillRect(430, y_point - speed, 15, speed);
+
+							ctx.fillStyle = "rgb(0,0,200)";
+							ctx.fillRect(450, y_point - dist, 15, dist);
+						}
+
+					}
+
+					// if(key=="speed"){
+					// 	document.getElementById("Speed").innerHTML='speed : '+data[key];
+					// }else if(key=="username"){
+					// 	document.getElementById("Name").innerHTML=data[key];
+					// }else if(key=="dist"){
+					// 	document.getElementById("Distance").innerHTML='distance : ' + data[key];
+					// }else if(key=="r"){
+					// 	document.getElementById("R").innerHTML='R : ' + data[key];
+					// }else if(key=="time"){
+					// 	document.getElementById("Time").innerHTML=data[key];
+					// }else if(key=="hr"){
+					// 	document.getElementById("HR").innerHTML='HR : ' +data[key];
+					// }
+
+
+				}
+				//這邊可以處理所有人的資料 看要去弄排名還是什麼...如果這筆資料要另外再傳給其他的client event也可以提出
+
+			});
+
+			socket.on('onStartSport', function (data) {
+				console.log('onStartSport', data);
+				//這邊可以處理所有人的資料 看要去弄排名還是什麼...如果這筆資料要另外再傳給其他的client event也可以提出
+
+			});
+
+			socket.on('onPrivateCall', function (data) {
+				console.log('onPrivateCall', data);
+				//這邊可以處理所有人的資料 看要去弄排名還是什麼...如果這筆資料要另外再傳給其他的client event也可以提出
+
+			});
+
+
+
+
+
+			// socket.emit('TestEcho', {});
+
+			// }); 
+
+
+
+			$('form').submit(function () {
+				console.log('submit pressed', $('#m').val());
+				// socket.emit('TestEcho', $('#m').val());
+				socket.emit('StartSport', { token: token, username: username, roomID: roomID });
+				// socket.emit('WhosHere',{token:token,username:username,roomID:'123'});
+				// socket.emit('LeaveDisconnect');
+
+
+				console.log('id : ', socketID);
+
+				//     	 socket.emit('PrivateCall', {username:username,roomID:roomID,token:token, socketID:'qfvMFbI7wmNTzKuzAAAU' ,pmsg:'testtest'
+				// }); 
+
+
+
+				$('#m').val('');
+
+
+				return false;
+			});
+		});
+	</script>
 </body>
 
 </html>

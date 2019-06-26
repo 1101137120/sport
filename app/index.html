@@ -1,98 +1,109 @@
+<!DOCTYPE html>
 <html lang="zh">
 
 <head>
-    <meta http-equiv="Content-Type" content="application/x-www-form-urlencoded; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>運動平台</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/csspin-round.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css?20170825">
+  <meta http-equiv="Content-Type" content="application/x-www-form-urlencoded; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運動平台</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/csspin-round.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css?20171006v2">
 </head>
 
-<body onload="checkCookie();">
-    <header>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-xs-12 logoImg">
-                        <!-- <a href="index.html"><img src="images/logo_white.png" alt="首頁logo"></a> -->
-                        <ul class="navbar-text navbar-right">
-                            <a data-dismiss="modal" data-toggle="modal" href="#login">Login</a>
-                            <li><a data-dismiss="modal" data-toggle="modal" href="#signup">Signup</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- 
+<body onload="checkCookie();">  
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-xs-12 logoImg">
+            <!-- <a href="index.html"><img src="images/logo_white.png" alt="首頁logo"></a> -->
+            <ul class="navbar-text navbar-right">
+              <a data-dismiss="modal" data-toggle="modal" href="#login">Login</a>
+              <li>
+                <a data-dismiss="modal" data-toggle="modal" href="#signup">Signup</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- 
 ============================================================================
 註冊
 ============================================================================
 -->
-    <section>
-        <form role="form" id="userSignUpForm">
-            <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabelSignUp">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h2 class="modal-title text-center" id="myModalLabelSignUp">註冊並開始運動吧！</h2>
-                        </div>
-                        <div class="modal-body">
-                            <div class="signUpDone text-center"></div>
-                            <div class="form-group">
-                                <label for="">email：</label>
-                                <input type="email" class="form-control" name="username" id="username" placeholder="電子郵件" />
-                                <div class="signUpMsg"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="">password：</label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="密碼" />
-                            </div>
-                            <div class="form-group">
-                                <label for="">retype password：</label>
-                                <input type="password" class="form-control" name="repassword" id="repassword" placeholder="請再輸入一次密碼" />
-                            </div>
-                            <div class="form-group">
-                                <label for="">name：</label>
-                                <input type="text" class="form-control" name="userN" id="userN" placeholder="姓名" />
-                            </div>
-                            <div class="form-group">
-                                <label for="">birthday：</label>
-                                <input type="date" class="form-control" name="userDate" id="userDate" />
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input id="signUpBtn" class="btn loginColor" type="submit" value="Signup" data-loading-text="Loading...">
-                            <hr>
-                            <div class="goLogIn">已經擁有帳戶？ <a data-dismiss="modal" data-toggle="modal" href="#login">登入</a></div>
-                        </div>
-                    </div>
-                </div>
+  <section>
+    <form role="form" id="userSignUpForm">
+      <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabelSignUp">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+              <h2 class="modal-title text-center" id="myModalLabelSignUp">註冊並開始運動吧！</h2>
             </div>
-        </form>
-    </section>
+            <div class="modal-body">
+              <div class="signUpDone text-center"></div>
+              <div class="form-group">
+                <label for="">email：</label>
+                <input type="email" class="form-control" name="username" id="username" placeholder="電子郵件" />
+                <div class="signUpMsg"></div>
+              </div>
+              <div class="form-group">
+                <label for="">password：</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="密碼" />
+              </div>
+              <div class="form-group">
+                <label for="">retype password：</label>
+                <input type="password" class="form-control" name="repassword" id="repassword" placeholder="請再輸入一次密碼" />
+              </div>
+              <div class="form-group">
+                <label for="">name：</label>
+                <input type="text" class="form-control" name="userN" id="userN" placeholder="姓名" />
+              </div>
+              <div class="form-group">
+                <label for="">birthday：</label>
+                <input type="date" class="form-control" name="userDate" id="userDate" placeholder="1990-12-31" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input id="signUpBtn" class="btn loginColor" type="submit" value="Signup" data-loading-text="Loading...">
+              <hr>
+              <div class="goLogIn">已經擁有帳戶？
+                <a data-dismiss="modal" data-toggle="modal" href="#login">登入</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
 
-    <!-- 
+  <!-- 
 ============================================================================
 登入
 ============================================================================
 -->
-    <section>
-        <form role="form" id="userLogInForm">
-            <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLogIn">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h2 class="modal-title text-center" id="myModalLabelLogIn">登入您的帳戶！</h2>
-                        </div>
-                        <div class="modal-body">
-                            <!-- <div class="login-facebook text-left">
+  <section>
+    <form role="form" id="userLogInForm">
+      <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLogIn">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+              <h2 class="modal-title text-center" id="myModalLabelLogIn">登入您的帳戶！</h2>
+            </div>
+            <div class="modal-body">
+              <!-- <div class="login-facebook text-left">
                                 <i class="fa fa-facebook"></i>
                                 <span>使用 Facebook 繼續</span>
                             </div>
@@ -101,139 +112,149 @@
                                 <div class="or"> OR </div>
                                 <div class="orLine"></div>
                             </div> -->
-                            <div class="errorMsg"></div>
-                            <div class="form-group">
-                                <label id="firstLabel" for="">email：</label>
-                                <input type="email" class="form-control" name="username" id="userLogInName" placeholder="電子郵件 (abc@sample.com)" />
-                            </div>
-                            <div class="form-group">
-                                <label for="">password：</label>
-                                <input type="password" class="form-control" name="password" id="userLogInPassword" placeholder="密碼" />
-                            </div>
-                            <div class="modal-footer">
-                                <input id="logInBtn" class="btn loginColor" type="submit" value="Login" data-loading-text="Loading...">
-                                <div class="forgetPW">
-                                    <div>或 <a data-dismiss="modal" data-toggle="modal" href="#forgetPW">忘記密碼</a></div>
-                                </div>
-                                <hr>
-                                <div class="goSignUp">
-                                    <div>還沒有帳戶嗎？ <a data-dismiss="modal" data-toggle="modal" href="#signup">註冊</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              <div class="errorMsg"></div>
+              <div class="form-group">
+                <label id="firstLabel" for="">email：</label>
+                <input type="email" class="form-control" name="username" id="userLogInName" placeholder="電子郵件 (abc@sample.com)" />
+              </div>
+              <div class="form-group">
+                <label for="">password：</label>
+                <input type="password" class="form-control" name="password" id="userLogInPassword" placeholder="密碼" />
+              </div>
+              <div class="modal-footer">
+                <input id="logInBtn" class="btn loginColor" type="submit" value="Login" data-loading-text="Loading...">
+                <div class="forgetPW">
+                  <div>或
+                    <a data-dismiss="modal" data-toggle="modal" href="#forgetPW">忘記密碼</a>
+                  </div>
                 </div>
+                <hr>
+                <div class="goSignUp">
+                  <div>還沒有帳戶嗎？
+                    <a data-dismiss="modal" data-toggle="modal" href="#signup">註冊</a>
+                  </div>
+                </div>
+              </div>
             </div>
-        </form>
-    </section>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
 
-    <!-- 
+  <!-- 
 ============================================================================
 個人資料
 ============================================================================
 -->
-    <section>
-        <form role="form" id="informationForm">
-            <div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="myModalLabelProfile">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title text-center" id="myModalLabelProfile">Information</h2>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="uHeight" id="uHeight" placeholder="身高" />
-                            </div>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="uWeight" id="uWeight" placeholder="體重" />
-                            </div>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="uAge" id="uAge" placeholder="年齡" />
-                                <div class="errorMsg"></div>
-                            </div>
-                            <div id="uSexBtn" class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-primary">
-                                <input type="radio" class="form-control uSex" name="uSex" value="M">
-                                Male
-                            </label>
-                                <label class="btn btn-primary">
-                                <input type="radio" class="form-control uSex" name="uSex" value="F">
-                                Female
-                            </label>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input id="informationBtn" class="btn btn-block loginColor" type="submit" value="Save" data-loading-text="Loading...">
-                        </div>
-                    </div>
-                </div>
+  <section>
+    <form role="form" id="informationForm">
+      <div class="modal fade" id="information" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabelProfile">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title text-center" id="myModalLabelProfile">Information</h2>
             </div>
-        </form>
-    </section>
-    <!-- 
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="text" class="form-control" name="uCName" id="uCName" placeholder="姓名" />
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" name="uHeight" id="uHeight" placeholder="身高" />
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" name="uWeight" id="uWeight" placeholder="體重" />
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" name="uAge" id="uAge" placeholder="年齡" />
+                <div class="errorMsg"></div>
+              </div>
+              <div class="form-group">
+                <input type="date" class="form-control" name="uBirthday" id="uBirthday" placeholder="1990-12-31" />
+              </div>
+              <div id="uSexBtn" class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary">
+                  <input type="radio" class="form-control uSex" name="uSex" value="M"> Male
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" class="form-control uSex" name="uSex" value="F"> Female
+                </label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input id="informationBtn" class="btn btn-block loginColor" type="submit" value="Save" data-loading-text="Loading...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+  <!-- 
 ============================================================================
 個人資料
 ============================================================================
 -->
-    <!-- 
+  <!-- 
 ============================================================================
 忘記密碼
 ============================================================================
 -->
 
-    <section>
-        <form role="form" id="forgetPWForm">
-            <div class="modal fade" id="forgetPW" tabindex="-1" role="dialog" aria-labelledby="myModalLabelforgetPW">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h2 class="modal-title text-center" id="myModalLabelforgetPW">忘記密碼</h2>
-                        </div>
-                        <div class="modal-body">
-                            <div id="errorText"></div>
-                            <div class="form-group">
-                                <label for="">電子郵件：</label>
-                                <input type="email" class="form-control" name="forgetUserName" id="forgetUserName" placeholder="abc@sample.com" />
-                            </div>
-                            <div class="showLoader text-center"></div>
-                            <div id="doneText"></div>
-                        </div>
-                        <div class="modal-footer">
-                            <input id="forgetBtn" class="btn btn-block loginColor" type="submit" value="重設密碼" data-loading-text="Loading...">
-                        </div>
-                    </div>
-                </div>
+  <section>
+    <form role="form" id="forgetPWForm">
+      <div class="modal fade" id="forgetPW" tabindex="-1" role="dialog" aria-labelledby="myModalLabelforgetPW">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+              <h2 class="modal-title text-center" id="myModalLabelforgetPW">忘記密碼</h2>
             </div>
-        </form>
-    </section>
+            <div class="modal-body">
+              <div id="errorText"></div>
+              <div class="form-group">
+                <label for="">電子郵件：</label>
+                <input type="email" class="form-control" name="forgetUserName" id="forgetUserName" placeholder="abc@sample.com" />
+              </div>
+              <div class="showLoader text-center"></div>
+              <div id="doneText"></div>
+            </div>
+            <div class="modal-footer">
+              <input id="forgetBtn" class="btn btn-block loginColor" type="submit" value="重設密碼" data-loading-text="Loading...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
 
 
-    <!-- 
+  <!-- 
 ============================================================================
 忘記密碼
 ============================================================================
 -->
 
 
-    <!-- 
+  <!-- 
 ============================================================================
 主畫面的圖片
 ============================================================================
 -->
 
-    <section class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 mainBg"></div>
-        </div>
-    </section>
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="js/index.js?20170825"></script>
-    <script src="js/jquery.cookie.js"></script>
-    <script src="js/Chart.min.js"></script>
-    <script src="js/parsley.min.js"></script>
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 mainBg"></div>
+    </div>
+  </section>
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="js/index.js?20180504"></script>
+  <script src="js/jquery.cookie.js"></script>
+  <script src="js/Chart.min.js"></script>
+  <script src="js/parsley.min.js"></script>
 </body>
 
 </html>

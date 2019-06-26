@@ -1,97 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="zh">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>教練模式</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/csspin-round.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css">
-    <link rel="stylesheet" type="text/css" href="css/mode.css">
-</head>
-
-<body>
-    <header>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 logoImg">
-                        <div class="dropdown navbar-text navbar-right">
-                            <ul class="nav-right">
-                                <li><a data-toggle="modal" data-target="#serialNum" href="#serialNum">輸入課程序號</a></li>
-                            </ul>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">個人資料<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="coachProfile.html">帳號資訊</a>
-                                </li>
-                                <li>
-                                    <a class="logOut" href="../index.html">登出</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <section>
-        <form role="form" id="serialNumForm">
-            <div class="modal fade" id="serialNum" tabindex="-1" role="dialog" aria-labelledby="serialNumForm">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">輸入您的課程序號吧！</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="">課程序號： </label>
-                                <input type="text" class="form-control" name="serialNumber" id="serialNumber" placeholder="3345678">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input class="btn btn-primary" type="submit" value="提交">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </section>
-    <section class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="chartForSpeed"></div>
-                <div id="chartForDist"></div>
-                <div id="hr"></div>
-                <div id="time"></div>
-                <div id="username"></div>
-            </div>
-        </div>
-    </section>
-    <section class="container" style="padding-top:80px">
-        <div class="row">
-            <div class="col-md-12">
-                <form>
-                    <button>Send</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
-    <script src="http://35.167.221.25:3005/socket.io/socket.io.js"></script>
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="../js/coachMain.js"></script>
-    <script src="/js/jquery.cookie.js"></script>
-</body>
-
-</html> -->
-
 <!DOCTYPE html>
 <html lang="zh">
 
@@ -102,10 +8,10 @@
     <title>教練模式</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/csspin-round.css">
+    <link rel="stylesheet" href="../css/csspin-round.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.css">
     <link rel="stylesheet" href="../css/notyf.min.css">
-    <link rel="stylesheet" type="text/css" href="css/mode.css">
+    <link rel="stylesheet" type="text/css" href="css/mode.css?20171103v1">
 </head>
 
 <body>
@@ -115,10 +21,9 @@
                 <div class="row">
                     <div class="col-md-12 logoImg">
                         <div class="dropdown navbar-text navbar-right">
-                            <ul class="nav-right">
-                                <li><a data-toggle="modal" data-target="#serialNum" href="#serialNum">輸入課程序號</a></li>
-                            </ul>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">個人資料<b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">個人資料
+                                <b class="caret"></b>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="coachProfile.html">帳號資訊</a>
@@ -133,18 +38,51 @@
             </div>
         </nav>
     </header>
+    <div id="leftNavIcon">
+        <ul>
+            <li>
+                <a href="mode.html">
+                    <i class="fa fa-home fa-4x" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="首頁"></i>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="modal" data-target="#serialNum" href="#serialNum">
+                    <i class="fa fa-plus fa-4x" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="輸入課程代碼"></i>
+                </a>
+            </li>
+            <li>
+                <form id="startSport">
+                    <input class="btn" type="submit" name="startBtn" id="startBtn" value="GO" data-toggle="tooltip" data-placement="right" title="課程開始">
+                </form>
+            </li>
+            <li>
+                <a data-toggle="modal" data-target="#whoInRoom" href="#whoInRoom">
+                    <i id="sendMsg" class="fa fa-user fa-4x" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="學員資訊"></i>
+                </a>
+            </li>
+            <li>
+                <i id="LeaveDisconnect" class="fa fa-power-off fa-4x" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="結束課程"></i>
+            </li>
+        </ul>
+    </div>
     <section>
         <form role="form" id="serialNumForm">
             <div class="modal fade" id="serialNum" tabindex="-1" role="dialog" aria-labelledby="serialNumForm">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">輸入您的課程序號吧！</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">輸入您的課程代碼吧！</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="">課程序號： </label>
+                                <label for="">課程名稱： </label>
+                                <input type="text" class="form-control" name="serialName" id="serialName" placeholder="新手特訓區">
+                            </div>
+                            <div class="form-group">
+                                <label for="">課程代碼： </label>
                                 <input type="text" class="form-control" name="serialNumber" id="serialNumber" placeholder="3345678">
                             </div>
                         </div>
@@ -156,65 +94,67 @@
             </div>
         </form>
     </section>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-3" style="padding-top:80px">
-                        <form id="startSport">
-                            <input class="btn btn-primary" type="submit" name="startBtn" id="startBtn" value="開始">
-                        </form>
+    <section>
+        <div class="modal fade" id="whoInRoom" tabindex="-1" role="dialog" aria-labelledby="whoInRoom">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel1">目前的運動學員</h4>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3" style="padding-top:80px">
-
+                    <div class="modal-body">
+                        <table class="table">
+                            <tr>
+                                <th>學員名稱</th>
+                                <th>進房時間</th>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="col-md-3" style="padding-top:80px">
-                        <div class="chartStyle">
-                            <span id="fSpeed"></span>
-                            <span id="aDist"></span>
-                            <div class="heart">
-                                <div class="heart-wrapper"></div>
-                                <span id="heartNum"></span>
-                            </div>
-                            <div class="userData">
-                                <div class="userName"></div>
-                                <div class="userTime"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3" style="padding-top:80px">
-                        <h1>目前在房間的學員</h1>
-                        <div class="whoInRoom"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="userRanking"></div>
+            </div>
+        </div>
+    </div> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titleText"></div>
+            </div>
+        </div>
     </div>
-
-
-    <!-- <ul id="messages"></ul>
-    <span id="Name">Name      :</span><br/>
-    <span id="Speed">Speed     :</span><br/>
-    <span id="Distance">Distance :</span><br/>
-    <span id="R">R :</span><br/>
-    <span id="HR">HR :</span><br/>
-    <span id="Time">Time :</span><br/>
-
-
-    <form action="">
-        <input id="m" autocomplete="off" /><button>Send</button>
-    </form> -->
-
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row showChart">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://vizjs.org/viz.v1.0.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
     <script src="http://35.167.221.25:3005/socket.io/socket.io.js"></script>
-    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="../../js/jquery-1.9.1.min.js"></script>
     <script src="../js/notyf.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="../js/coachMain.js"></script>
-    <script src="/js/jquery.cookie.js"></script>
+    <script src="../js/footable.min.js"></script>
+    <script src="../js/coachMain.js?20171107"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+
 </body>
 
 </html>

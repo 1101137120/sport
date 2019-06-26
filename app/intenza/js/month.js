@@ -12,7 +12,7 @@ $(window).load(function() {
         uClientID = jsonObj.data.uClientID;
         $.ajax({
                 type: 'POST',
-                url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-01-01/2018-01-01/' + uClientID,
+                url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-01-01/2018-01-01/' + uClientID,
                 dataType: 'json',
                 data: {
                     username: jsonObj.data.UserName,
@@ -249,7 +249,7 @@ $(window).load(function() {
                             case '一月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-01-01/2017-01-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-01-01/2017-01-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -457,7 +457,7 @@ $(window).load(function() {
                             case '二月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-02-01/2017-02-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-02-01/2017-02-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -661,7 +661,7 @@ $(window).load(function() {
                             case '三月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-03-01/2017-03-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-03-01/2017-03-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -875,7 +875,7 @@ $(window).load(function() {
                             case '四月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-04-01/2017-04-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-04-01/2017-04-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -1082,7 +1082,7 @@ $(window).load(function() {
                             case '五月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-05-01/2017-05-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-05-01/2017-05-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -1289,7 +1289,7 @@ $(window).load(function() {
                             case '六月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-06-01/2017-06-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-06-01/2017-06-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -1496,7 +1496,7 @@ $(window).load(function() {
                             case '七月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-07-01/2017-07-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-07-01/2017-07-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -1704,7 +1704,7 @@ $(window).load(function() {
                             case '八月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-08-01/2017-08-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-08-01/2017-08-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -1912,7 +1912,7 @@ $(window).load(function() {
                             case '九月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-09-01/2017-09-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-09-01/2017-09-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -2120,7 +2120,7 @@ $(window).load(function() {
                             case '十月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-10-01/2017-10-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-10-01/2017-10-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -2326,7 +2326,7 @@ $(window).load(function() {
                             case '十一月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-11-01/2017-11-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-11-01/2017-11-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,
@@ -2534,7 +2534,7 @@ $(window).load(function() {
                             case '十二月':
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'http://35.167.221.25:8080/RtInfoSum/DateuClientID/GET/2017-12-01/2017-12-31/' + uClientID,
+                                    url: 'http://54.214.111.32:9004/RtInfoSum/DateuClientID/GET/2017-12-01/2017-12-31/' + uClientID,
                                     dataType: 'json',
                                     data: {
                                         username: jsonObj.data.UserName,

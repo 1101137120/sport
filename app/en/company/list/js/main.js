@@ -1,4 +1,4 @@
-var url = "http://35.167.221.25:8080";
+var url = "http://54.214.111.32:9004";
 
 // 廠商登出 function
 function userLogOut() {

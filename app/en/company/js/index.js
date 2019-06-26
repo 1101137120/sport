@@ -14,7 +14,7 @@ function checkCookie() {
 登入頁面
 ============================================================================
 */
-var url = "http://35.167.221.25:8080/";
+var url = "http://54.214.111.32:9004/";
 //使用 userlogin 取得登入資料，這裡單純 ajax 登入後取得 userName token 資料
 function userLogin() {
   var $userNameLogin = $("#userLogInName").val();

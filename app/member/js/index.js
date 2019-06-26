@@ -1,6 +1,3 @@
-/*jshint esversion: 6 */
-/*jshint loopfunc: true */
-
 // 取得 user 的 cookie
 function getCookie() {
   const userData = JSON.parse($.cookie("logCookie"));
@@ -11,14 +8,31 @@ function getCookie() {
 進入畫面自動取得年紀錄
 =======================================================
 */
-var url = "http://35.167.221.25:8080/";
+var getHref = location.href.pathname;
+//console.log(getHref);
+var url = "http://54.214.111.32:9004/";
 //取得整年份的運動資料
+var getD = new Date();
+var getY = getD.getFullYear();
+var urlSearch = location.search.split("=")[1];
+//console.log(urlSearch);
+if (urlSearch === undefined) {
+  //console.log("hi");
+  urlSearch = getY;
+}
 function getAllData(cb) {
   var showCookie = getCookie();
   $.ajax({
     type: "POST",
     url:
-      url + "api/rtInfoSum/" + showCookie.uClientID + "/2017-01-01/2017-12-31",
+      url +
+      "api/rtInfoSum/" +
+      showCookie.uClientID +
+      "/" +
+      urlSearch +
+      "-01-01/" +
+      urlSearch +
+      "-12-31",
     dataType: "json",
     data: {
       username: showCookie.userName,
@@ -28,21 +42,26 @@ function getAllData(cb) {
     crossDomain: true,
     xhrFields: {
       withCredentials: true
+    },
+    beforeSend: function() {
+      $(".spinner").show();
+    },
+    complete: function() {
+      $(".spinner").remove();
     }
   }).done(function(data) {
-    console.log(data);
+    //console.log(data);
     cb(null, data);
   });
 }
-
 //取得每個月份的所有運動資料
 function getAllSportData() {
   var showCookie = getCookie();
   getAllData(function(err, data) {
     if (err) {
-      console.log(err);
+      // console.log(err);
     }
-    console.log(data);
+    // console.log(data);
     let janData = {
       mile: 0,
       data: []
@@ -143,7 +162,7 @@ function getAllSportData() {
           break;
       }
     }
-    const allMonthData = {
+    const allMonthData = [
       janData,
       febData,
       marData,
@@ -156,7 +175,7 @@ function getAllSportData() {
       octData,
       novData,
       decData
-    };
+    ];
     const getMonthMileTotal = [
       janData.mile,
       febData.mile,
@@ -171,8 +190,8 @@ function getAllSportData() {
       novData.mile,
       decData.mile
     ];
-    console.log(getMonthMileTotal);
-    console.log(allMonthData);
+    // console.log(getMonthMileTotal);
+    // console.log(allMonthData);
     let chartdata = {
       labels: [
         "一月",
@@ -201,7 +220,27 @@ function getAllSportData() {
       ]
     }; //chartdata 結束
 
-    $(".showYear").append("<h1>年紀錄</h1>");
+    $(".showYear").append(
+      "<h1>年紀錄 <small class='changeYear'><i class='fa fa-arrow-circle-o-left' aria-hidden='true'></i> " +
+        urlSearch +
+        " <i class='fa fa-arrow-circle-o-right' aria-hidden='true'></small></h1>"
+    );
+    $(".fa-arrow-circle-o-left").on("click", function() {
+      $(".changeYear").html(
+        "<i class='fa fa-arrow-circle-o-left' aria-hidden='true'></i> " +
+          --urlSearch +
+          " <i class='fa fa-arrow-circle-o-right' aria-hidden='true'>"
+      );
+      location.href = "index.html?year=" + urlSearch;
+    });
+    $(".fa-arrow-circle-o-right").on("click", function() {
+      $(".changeYear").html(
+        "<i class='fa fa-arrow-circle-o-left' aria-hidden='true'></i> " +
+          ++urlSearch +
+          " <i class='fa fa-arrow-circle-o-right' aria-hidden='true'>"
+      );
+      location.href = "index.html?year=" + urlSearch;
+    });
     var showTab = "";
     showTab += '<li class="active">';
     showTab +=
@@ -236,17 +275,37 @@ function getAllSportData() {
         }
       }
     });
-    // 因 20170822 開會決定更改流程一進到畫面就 show 出 全部的資料和最新一筆的詳細資料
+    // 因 20170822 開會決定更改流程一進到畫面就 show 出全部的資料和最新一筆的詳細資料
     var getDate = new Date().getMonth() + 1;
-    console.log(getDate);
-    switch (getDate) {
-      case 8:
-        setMonthData(augData);
-        break;
-      case 9:
-        setMonthData(sepData);
-        break;
-    }
+    var arr = [];
+    // console.log(getDate);
+    // console.log(allMonthData.sepData[0]);
+    allMonthData.forEach(function(data, index) {
+      if (data.mile > 1) {
+        arr.push(data);
+        if (arr.length > 1) {
+          arr.shift();
+        }
+      }
+      // switch (data > 1) {
+      //   case 8:
+      //     setMonthData(augData);
+      //     break;
+      //   case 9:
+      //     setMonthData(sepData);
+      //     break;
+      //   case 10:
+      //     setMonthData(octData);
+      //     break;
+      //   case 11:
+      //     setMonthData(novData);
+      //     break;
+      //   case 12:
+      //     setMonthData(decData);
+      //     break;
+      // }
+    });
+    setMonthData(arr[0]);
     // 結束
     canvas.onclick = function(evt) {
       let activePoints = myNewChart.getElementsAtEvent(evt);
@@ -261,6 +320,7 @@ function getAllSportData() {
       $(".monthMune ul").show();
       $(".showDayMessage").show();
       $(".showTextMune").show();
+      $("#graphdiv").html("");
       // 監聽 user 點柱狀圖裡的哪個月份後進入 switch ，然後再進入 setMonthData function 帶月份跟資料兩個參數得到運動資料
       switch (label) {
         case "一月":
@@ -268,6 +328,36 @@ function getAllSportData() {
           $(".showDayMessage3").html("");
           $(".showDay").html("");
           setMonthData(janData);
+          break;
+        case "二月":
+          $(".showDayMessage2").html("");
+          $(".showDayMessage3").html("");
+          $(".showDay").html("");
+          setMonthData(febData);
+          break;
+        case "三月":
+          $(".showDayMessage2").html("");
+          $(".showDayMessage3").html("");
+          $(".showDay").html("");
+          setMonthData(marData);
+          break;
+        case "四月":
+          $(".showDayMessage2").html("");
+          $(".showDayMessage3").html("");
+          $(".showDay").html("");
+          setMonthData(aprData);
+          break;
+        case "五月":
+          $(".showDayMessage2").html("");
+          $(".showDayMessage3").html("");
+          $(".showDay").html("");
+          setMonthData(mayData);
+          break;
+        case "六月":
+          $(".showDayMessage2").html("");
+          $(".showDayMessage3").html("");
+          $(".showDay").html("");
+          setMonthData(junData);
           break;
         case "七月":
           $(".showDayMessage2").html("");
@@ -286,8 +376,27 @@ function getAllSportData() {
           $(".showDayMessage3").html("");
           $(".showDay").html("");
           setMonthData(sepData);
+          break;
+        case "十月":
+          $(".showDayMessage2").html("");
+          $(".showDayMessage3").html("");
+          $(".showDay").html("");
+          setMonthData(octData);
+          break;
+        case "十一月":
+          $(".showDayMessage2").html("");
+          $(".showDayMessage3").html("");
+          $(".showDay").html("");
+          setMonthData(novData);
+          break;
+        case "十二月":
+          $(".showDayMessage2").html("");
+          $(".showDayMessage3").html("");
+          $(".showDay").html("");
+          setMonthData(decData);
+          break;
         default:
-          console.log("no");
+          //console.log("no");
           break;
       } // outside switch
     };
@@ -329,118 +438,152 @@ function setMonthData(month) {
   let day30 = 0;
   let day31 = 0;
   let getdEncodingArr = [];
+  // 20171103 修改架構 - 讓 ui 的使用者點選每日記錄日期由大到小
+  // let sortDate = "";
+  // sortDate = getdEncodingArr.sort(function(a, b) {
+  //   return b.StartTime > a.StartTime ? 1 : -1;
+  // });
   // 判斷這個月有沒有運動資料
-  if (month.data.length === 0) {
-    console.log(month);
+  if (month === undefined || month.data.length === 0) {
+    // console.log(month);
     $(".showMonth").html("沒有運動資料");
     $("#mycanvasDay").hide();
+    $("#graphdiv").hide();
+    $(".nav-tabs").hide();
     $(".mouseOver .row").css({ overflow: "hidden", height: "0px" });
     return;
   }
-  for (var i in month.data) {
-    var monthDoubleDay = month.data[i].StartTime.slice(8, 10);
+  let sortDateForTable = month.data.sort(function(a, b) {
+    return b.StartTime > a.StartTime ? 1 : -1;
+  });
+  // console.log(sortDateForTable);
+  for (var i in sortDateForTable) {
+    // console.log(sortDate[i]);
+    var monthDoubleDay = sortDateForTable[i].StartTime.slice(8, 10);
+    //console.log(monthDoubleDay);
     switch (monthDoubleDay) {
       case "01":
-        day1 += parseInt(month.data[i].distT);
+        day1 += parseInt(sortDateForTable[i].distT);
         break;
       case "02":
-        day2 += parseInt(month.data[i].distT);
+        day2 += parseInt(sortDateForTable[i].distT);
         break;
       case "03":
-        day3 += parseInt(month.data[i].distT);
+        day3 += parseInt(sortDateForTable[i].distT);
         break;
       case "04":
-        day4 += parseInt(month.data[i].distT);
+        day4 += parseInt(sortDateForTable[i].distT);
         break;
       case "05":
-        day5 += parseInt(month.data[i].distT);
+        day5 += parseInt(sortDateForTable[i].distT);
         break;
       case "06":
-        day6 += parseInt(month.data[i].distT);
+        day6 += parseInt(sortDateForTable[i].distT);
         break;
       case "07":
-        day7 += parseInt(month.data[i].distT);
+        day7 += parseInt(sortDateForTable[i].distT);
         break;
       case "08":
-        day8 += parseInt(month.data[i].distT);
+        day8 += parseInt(sortDateForTable[i].distT);
         break;
       case "09":
-        day9 += parseInt(month.data[i].distT);
+        day9 += parseInt(sortDateForTable[i].distT);
         break;
       case "10":
-        day10 += parseInt(month.data[i].distT);
+        day10 += parseInt(sortDateForTable[i].distT);
         break;
       case "11":
-        day11 += parseInt(month.data[i].distT);
+        day11 += parseInt(sortDateForTable[i].distT);
         break;
       case "12":
-        day12 += parseInt(month.data[i].distT);
+        day12 += parseInt(sortDateForTable[i].distT);
         break;
       case "13":
-        day13 += parseInt(month.data[i].distT);
+        day13 += parseInt(sortDateForTable[i].distT);
         break;
       case "14":
-        day14 += parseInt(month.data[i].distT);
+        day14 += parseInt(sortDateForTable[i].distT);
         break;
       case "15":
-        day15 += parseInt(month.data[i].distT);
+        day15 += parseInt(sortDateForTable[i].distT);
         break;
       case "16":
-        day16 += parseInt(month.data[i].distT);
+        day16 += parseInt(sortDateForTable[i].distT);
         break;
       case "17":
-        day17 += parseInt(month.data[i].distT);
+        day17 += parseInt(sortDateForTable[i].distT);
         break;
       case "18":
-        day18 += parseInt(month.data[i].distT);
+        day18 += parseInt(sortDateForTable[i].distT);
         break;
       case "19":
-        day19 += parseInt(month.data[i].distT);
+        day19 += parseInt(sortDateForTable[i].distT);
         break;
       case "20":
-        day20 += parseInt(month.data[i].distT);
+        day20 += parseInt(sortDateForTable[i].distT);
         break;
       case "21":
-        day21 += parseInt(month.data[i].distT);
+        day21 += parseInt(sortDateForTable[i].distT);
         break;
       case "22":
-        day22 += parseInt(month.data[i].distT);
+        day22 += parseInt(sortDateForTable[i].distT);
         break;
       case "23":
-        day23 += parseInt(month.data[i].distT);
+        day23 += parseInt(sortDateForTable[i].distT);
         break;
       case "24":
-        day24 += parseInt(month.data[i].distT);
+        day24 += parseInt(sortDateForTable[i].distT);
         break;
       case "25":
-        day25 += parseInt(month.data[i].distT);
+        day25 += parseInt(sortDateForTable[i].distT);
         break;
       case "26":
-        day26 += parseInt(month.data[i].distT);
+        day26 += parseInt(sortDateForTable[i].distT);
         break;
       case "27":
-        day27 += parseInt(month.data[i].distT);
+        day27 += parseInt(sortDateForTable[i].distT);
         break;
       case "28":
-        day28 += parseInt(month.data[i].distT);
+        day28 += parseInt(sortDateForTable[i].distT);
         break;
       case "29":
-        day29 += parseInt(month.data[i].distT);
+        day29 += parseInt(sortDateForTable[i].distT);
         break;
       case "30":
-        day30 += parseInt(month.data[i].distT);
+        day30 += parseInt(sortDateForTable[i].distT);
         break;
       case "31":
-        day31 += parseInt(month.data[i].distT);
+        day31 += parseInt(sortDateForTable[i].distT);
         break;
     } // inside switch
-    let getAllDay = month.data[i].StartTime;
+    let getAllDay = sortDateForTable[i].StartTime;
     let getYear = getAllDay.slice(0, 4);
     let getMonth = getAllDay.slice(5, 7);
     let getDate = getAllDay.slice(8, 10);
+    let getHoursAndMinAndSec = getAllDay.slice(11);
+    let getdEncoding = sortDateForTable[i];
+    getdEncodingArr[i] = getdEncoding;
+    function getSportTime() {
+      var theSecond = parseInt(getdEncodingArr[i].sTimeT % 60);
+      var theMinute = parseInt((getdEncodingArr[i].sTimeT / 60) % 60);
+      var theHour = parseInt(getdEncodingArr[i].sTimeT / 60 / 60);
+      var result = "" + parseInt(theSecond) + " 秒";
+      if (theMinute > 0) {
+        result = "" + parseInt(theMinute) + " 分 " + result;
+      }
+      if (theHour > 0) {
+        result = "" + parseInt(theHour) + " 小時 " + result;
+      }
+      return result;
+    }
+
     $(".mouseOver .row").css({ overflow: "scroll", height: "400px" });
     $(".showTextMune").html(
-      "<p>" + getMonth + "月份共有 " + month.data.length + " 筆運動資料</p>"
+      "<p>" +
+        getMonth +
+        "月份共有 " +
+        sortDateForTable.length +
+        " 筆運動資料</p>"
     );
     $(".showMonth").html("<h1>" + getMonth + " 月份的紀錄</h1>");
     $(".showDayMessage").append(
@@ -450,30 +593,34 @@ function setMonthData(month) {
         getMonth +
         "/" +
         getDate +
+        " " +
+        getHoursAndMinAndSec +
         "</th><th>" +
-        month.data[i].distT +
+        sortDateForTable[i].distT +
         ' <span class="font">mile</span> </th><th>' +
-        month.data[i].calT +
+        sortDateForTable[i].calT +
         ' <span class="font">kcal</span> </th><th>' +
-        month.data[i].wattT +
-        ' <span class="font">w</span> </th></tr>'
+        getSportTime() +
+        " </th></tr>"
     );
-    let getdEncoding = month.data[i];
-    getdEncodingArr[i] = getdEncoding;
     // console.log("該月共有幾筆的詳細資料： ", getdEncodingArr);
-    $(".searchDay").removeClass("searchDay").addClass("searchDay" + i);
+    $(".searchDay")
+      .removeClass("searchDay")
+      .addClass("searchDay" + i);
   } // for
-  console.log("月份的所有運動資訊", getdEncodingArr);
+  //console.log("月份的所有運動資訊", getdEncodingArr);
   /**
- * 進到畫面就秀出所有的運動資料，且最新一筆的詳細資料
- */
+   * 進到畫面就秀出所有的運動資料，且最新一筆的詳細資料
+   */
   //20170822 修改流程，讓 user 進來後就顯示全部的資料和最新一筆的詳細資訊
-  var getLastData = getdEncodingArr.length - 1;
-  console.log(getdEncodingArr[getLastData]);
-  function formatSeconds(value) {
-    var theSecond = parseInt(getdEncodingArr[getLastData].sTimeT / 2 % 60);
-    var theMinute = parseInt(getdEncodingArr[getLastData].sTimeT / 2 / 60 % 60);
-    var theHour = parseInt(getdEncodingArr[getLastData].sTimeT / 2 / 60 / 60);
+  $("#graphdiv").show();
+  $(".nav-tabs").show();
+  // var i = getdEncodingArr.length;
+  // console.log("最新一筆的詳細資訊", getdEncodingArr[i]);
+  function formatSeconds() {
+    var theSecond = parseInt(getdEncodingArr[0].sTimeT % 60);
+    var theMinute = parseInt((getdEncodingArr[0].sTimeT / 60) % 60);
+    var theHour = parseInt(getdEncodingArr[0].sTimeT / 60 / 60);
     var result = "" + parseInt(theSecond) + " 秒";
     if (theMinute > 0) {
       result = "" + parseInt(theMinute) + " 分 " + result;
@@ -485,40 +632,40 @@ function setMonthData(month) {
   }
   $(".showDay").html(
     "<p>" +
-      getdEncodingArr[getLastData].StartTime.slice(5, 7) +
+      getdEncodingArr[0].StartTime.slice(5, 7) +
       "月" +
-      getdEncodingArr[getLastData].StartTime.slice(8, 10) +
+      getdEncodingArr[0].StartTime.slice(8, 10) +
       "號詳細的運動資料</p>"
   );
   $(".showDayMessage2").html(
     '<tr><th class="active"></th><th class="active"><span class="font">TOTAL</span></' +
       'th></tr><tr><td><span class="font">DISTANCE</span></td><td>' +
-      getdEncodingArr[getLastData].distT +
+      getdEncodingArr[0].distT +
       ' <span class="font">km</span></td></tr><tr><td><span class="font">TIME</span></t' +
       "d><td>" +
-      formatSeconds(getdEncodingArr[getLastData].sTimeT) +
+      formatSeconds() +
       '</td></tr><tr><td><span class="font">CALORIES</span></td><td>' +
-      getdEncodingArr[getLastData].calT +
+      getdEncodingArr[0].calT +
       ' <span class="font">kcal</span></td></tr>'
   );
   $(".showDayMessage3").html(
     '<tr><th class="active"><span class="font">AVG</span></th><th class="active"></th' +
       '><th class="active"><span class="font">MAX</span></th></tr><tr><td>' +
-      getdEncodingArr[getLastData].wattAvg +
+      getdEncodingArr[0].wattAvg +
       '</td><th><span class="font">WATT</span></th><td>' +
-      getdEncodingArr[getLastData].wattMax +
+      getdEncodingArr[0].wattMax +
       "</td></tr><tr><td>" +
-      getdEncodingArr[getLastData].rpmAvg +
+      getdEncodingArr[0].rpmAvg +
       '</td><th><span class="font">RPM</span></th><td>' +
-      getdEncodingArr[getLastData].rpmMax +
+      getdEncodingArr[0].rpmMax +
       "</td></tr><tr><td>" +
-      getdEncodingArr[getLastData].speedAvg +
+      getdEncodingArr[0].speedAvg +
       '</td><th><span class="font">SPEED</span></th><td>' +
-      getdEncodingArr[getLastData].speedMax +
+      getdEncodingArr[0].speedMax +
       "</td></tr><tr><td>" +
-      getdEncodingArr[getLastData].hrAvg +
+      getdEncodingArr[0].hrAvg +
       '</td><th><span class="font">HR</span></th><td>' +
-      getdEncodingArr[getLastData].hrMax +
+      getdEncodingArr[0].hrMax +
       "</td></tr>"
   );
   $(".showRound").html("");
@@ -528,12 +675,43 @@ function setMonthData(month) {
     data: {
       username: showCookie.userName,
       token: showCookie.token,
-      SportsInfoID: getdEncodingArr[getLastData].SportsInfoID
+      SportsInfoID: getdEncodingArr[0].SportsInfoID
+    },
+    beforeSend: function() {
+      $(".showRound").html('<div class="cp-spinner cp-round"></div>');
+    },
+    complete: function() {
+      $(".showRound").html("");
     }
   }).done(function(sportInfoData) {
-    console.log("取得該筆 id 的每秒運動資料： ", sportInfoData);
+    //console.log("取得該筆 id 的每秒運動資料： ", sportInfoData);
     var getInfoData = [];
-
+    if (sportInfoData.data.event === "empty") {
+      $(".showRound").html("");
+      getInfoData.push([0, 0, 0, 0]);
+      var g = new Dygraph(document.getElementById("graphdiv"), getInfoData, {
+        labels: ["秒", "心跳", "瓦特", "速度"],
+        showRangeSelector: true, // 圖表下面的選取範圍
+        rangeSelectorPlotFillColor: "#000", // 選取範圍的顏色
+        // legend: "always", // 狀態一直存在 ex： 心跳、轉速
+        animatedZooms: true,
+        // logscale: true,
+        highlightSeriesBackgroundAlpha: 0.4,
+        highlightSeriesBackgroundColor: "#fff",
+        highlightSeriesOpts: {
+          strokeWidth: 2
+        },
+        axes: {
+          y: {
+            drawAxis: true
+          }
+        },
+        colors: ["#ff0079", "#01aeae", "#cbcb00"]
+      });
+      $(document).on("shown.bs.tab", 'a[data-toggle="tab"]', function(e) {
+        g.resize(); // resize dygraph
+      });
+    }
     sportInfoData.data.rows.forEach(function(data, index) {
       getInfoData.push([
         index,
@@ -542,27 +720,47 @@ function setMonthData(month) {
         parseInt(data.rtSpeed)
       ]);
     });
-    new Dygraph(document.getElementById("graphdiv"), getInfoData, {
+    var g = new Dygraph(document.getElementById("graphdiv"), getInfoData, {
       labels: ["秒", "心跳", "瓦特", "速度"],
       showRangeSelector: true, // 圖表下面的選取範圍
       rangeSelectorPlotFillColor: "#000", // 選取範圍的顏色
-      legend: "always", // 狀態一直存在 ex： 心跳、轉速
+      // legend: "always", // 狀態一直存在 ex： 心跳、轉速
       animatedZooms: true,
+      // logscale: true,
+      highlightSeriesBackgroundAlpha: 0.4,
+      highlightSeriesBackgroundColor: "#fff",
+      highlightSeriesOpts: {
+        strokeWidth: 2
+      },
+      axes: {
+        y: {
+          drawAxis: true
+        }
+      },
       colors: ["#ff0079", "#01aeae", "#cbcb00"]
+    });
+    $(document).on("shown.bs.tab", 'a[data-toggle="tab"]', function(e) {
+      g.resize(); // resize dygraph
     });
   });
 
   //結束
   //抓出使用者點哪一筆的日紀錄
-  for (let i in getdEncodingArr) {
-    let getDateForMune = month.data[i].StartTime;
+
+  // 20171103 修改架構 - 讓 ui 的使用者點選每日記錄日期由大到小
+  let sortDate = "";
+  sortDate = getdEncodingArr.sort(function(a, b) {
+    return b.StartTime > a.StartTime ? 1 : -1;
+  });
+  for (let i in sortDate) {
+    let getDateForMune = sortDateForTable[i].StartTime;
     let getMonth = getDateForMune.slice(5, 7);
     let getDate = getDateForMune.slice(8, 10);
     // 運算詳細資料裡的運動時間
     function formatSeconds(value) {
-      var theSecond = parseInt(getdEncodingArr[i].sTimeT / 2 % 60);
-      var theMinute = parseInt(getdEncodingArr[i].sTimeT / 2 / 60 % 60);
-      var theHour = parseInt(getdEncodingArr[i].sTimeT / 2 / 60 / 60);
+      var theSecond = parseInt(sortDate[i].sTimeT % 60);
+      var theMinute = parseInt((sortDate[i].sTimeT / 60) % 60);
+      var theHour = parseInt(sortDate[i].sTimeT / 60 / 60);
       var result = "" + parseInt(theSecond) + " 秒";
       if (theMinute > 0) {
         result = "" + parseInt(theMinute) + " 分 " + result;
@@ -573,25 +771,34 @@ function setMonthData(month) {
       return result;
     }
     $(".searchDay" + i).on("click", function() {
-      $(".showDay").html("<p>" + getMonth + "月" + getDate + "號詳細的運動資料</p>");
+      /**
+       * 因 ie 無法使用 let 新語法關係，而改成看使用者點擊哪一個 className 來判斷
+       * 做法是 .searchDay 這個 className 後面都有加上 i ，所以用 slice() 來取 className 的 i 來判斷使用者點擊哪一筆的資料
+       */
+      let $thisClassName = this.className.slice(16);
+      $(".showDay").html(
+        "<p>" + getMonth + "月" + getDate + "號詳細的運動資料</p>"
+      );
       $(".showDayMessage2").html("");
       $(".showDayMessage3").html("");
       $("#graphdiv").html("");
-      $(".showAnimated").hide().fadeIn(300);
+      $(".showAnimated")
+        .hide()
+        .fadeIn(300);
       var showDayMsg = "";
       showDayMsg +=
         '<tr><th class="active"></th><th class="active"><span class="font">TOTAL</span></th></tr>';
       showDayMsg +=
         '<tr><td><span class="font">DISTANCE</span></td><td>' +
-        getdEncodingArr[i].distT +
+        getdEncodingArr[$thisClassName].distT +
         ' <span class="font">km</span></td></tr>';
       showDayMsg +=
         '<tr><td><span class="font">TIME</span></td><td>' +
-        formatSeconds(getdEncodingArr[i].sTimeT) +
+        formatSeconds(getdEncodingArr[$thisClassName].sTimeT) +
         "</td></tr>";
       showDayMsg +=
         '<tr><td><span class="font">CALORIES</span></td><td>' +
-        getdEncodingArr[i].calT +
+        getdEncodingArr[$thisClassName].calT +
         ' <span class="font">kcal</span></td></tr>';
       $(".showDayMessage2").html(showDayMsg);
       var showDayMsgOfRight = "";
@@ -599,36 +806,37 @@ function setMonthData(month) {
         '<tr><th class="active"><span class="font">AVG</span></th><th class="active"></th><th class="active"><span class="font">MAX</span></th></tr>';
       showDayMsgOfRight +=
         "<tr><td>" +
-        getdEncodingArr[i].wattAvg +
+        getdEncodingArr[$thisClassName].wattAvg +
         '</td><th><span class="font">WATT</span></th>';
-      showDayMsgOfRight += "<td>" + getdEncodingArr[i].wattMax + "</td></tr>";
+      showDayMsgOfRight +=
+        "<td>" + getdEncodingArr[$thisClassName].wattMax + "</td></tr>";
       showDayMsgOfRight +=
         "<tr><td>" +
-        getdEncodingArr[i].rpmAvg +
+        getdEncodingArr[$thisClassName].rpmAvg +
         '</td><th><span class="font">RPM</span></th><td>' +
-        getdEncodingArr[i].rpmMax +
+        getdEncodingArr[$thisClassName].rpmMax +
         "</td></tr>";
       showDayMsgOfRight +=
         "<tr><td>" +
-        getdEncodingArr[i].speedAvg +
+        getdEncodingArr[$thisClassName].speedAvg +
         '</td><th><span class="font">SPEED</span></th><td>' +
-        getdEncodingArr[i].speedMax +
+        getdEncodingArr[$thisClassName].speedMax +
         "</td></tr>";
       showDayMsgOfRight +=
         "<tr><td>" +
-        getdEncodingArr[i].hrAvg +
+        getdEncodingArr[$thisClassName].hrAvg +
         '</td><th><span class="font">HR</span></th><td>' +
-        getdEncodingArr[i].hrMax +
+        getdEncodingArr[$thisClassName].hrMax +
         '</td></tr>"';
       $(".showDayMessage3").html(showDayMsgOfRight);
-      console.log("點選跑出sportID", getdEncodingArr[i].SportsInfoID);
+      //console.log("點選跑出sportID",getdEncodingArr[$thisClassName].SportsInfoID);
       $.ajax({
         type: "POST",
         url: url + "api/rtInfo/GET",
         data: {
           username: showCookie.userName,
           token: showCookie.token,
-          SportsInfoID: getdEncodingArr[i].SportsInfoID
+          SportsInfoID: getdEncodingArr[$thisClassName].SportsInfoID
         },
         beforeSend: function() {
           $(".showRound").html('<div class="cp-spinner cp-round"></div>');
@@ -637,8 +845,38 @@ function setMonthData(month) {
           $(".showRound").html("");
         }
       }).done(function(sportInfoData) {
-        console.log("取得該筆 id 的每秒運動資料： ", sportInfoData);
+        //console.log("取得該筆 id 的每秒運動資料： ", sportInfoData);
         var getInfoData = [];
+        if (sportInfoData.data.event === "empty") {
+          $(".showRound").html("");
+          getInfoData.push([0, 0, 0, 0]);
+          var g = new Dygraph(
+            document.getElementById("graphdiv"),
+            getInfoData,
+            {
+              labels: ["秒", "心跳", "瓦特", "速度"],
+              showRangeSelector: true, // 圖表下面的選取範圍
+              rangeSelectorPlotFillColor: "#000", // 選取範圍的顏色
+              // legend: "always", // 狀態一直存在 ex： 心跳、轉速
+              animatedZooms: true,
+              // logscale: true,
+              highlightSeriesBackgroundAlpha: 0.4,
+              highlightSeriesBackgroundColor: "#fff",
+              highlightSeriesOpts: {
+                strokeWidth: 2
+              },
+              axes: {
+                y: {
+                  drawAxis: true
+                }
+              },
+              colors: ["#ff0079", "#01aeae", "#cbcb00"]
+            }
+          );
+          $(document).on("shown.bs.tab", 'a[data-toggle="tab"]', function(e) {
+            g.resize(); // resize dygraph
+          });
+        }
 
         sportInfoData.data.rows.forEach(function(data, index) {
           getInfoData.push([
@@ -651,9 +889,20 @@ function setMonthData(month) {
         var g = new Dygraph(document.getElementById("graphdiv"), getInfoData, {
           labels: ["秒", "心跳", "瓦特", "速度"],
           showRangeSelector: true, // 圖表下面的選取範圍
-          rangeSelectorPlotFillColor: "#646464", // 選取範圍的顏色
-          legend: "always", // 狀態一直存在 ex： 心跳、轉速
+          rangeSelectorPlotFillColor: "#000", // 選取範圍的顏色
+          // legend: "always", // 狀態一直存在 ex： 心跳、轉速
           animatedZooms: true,
+          // logscale: true,
+          highlightSeriesBackgroundAlpha: 0.4,
+          highlightSeriesBackgroundColor: "#fff",
+          highlightSeriesOpts: {
+            strokeWidth: 2
+          },
+          axes: {
+            y: {
+              drawAxis: true
+            }
+          },
           colors: ["#ff0079", "#01aeae", "#cbcb00"]
         });
         // 因為使用 bootstrap tab 的關係會導致 dygraph 這個 library 不知道 div 的寬度多少，會出現 bug (圖無法顯示)
@@ -773,11 +1022,11 @@ function showProfile() {
   //先檢查是否有 cookie ，如果沒有就跳回登入頁面
   if ($.cookie("logCookie")) {
     let jsonObj = JSON.parse($.cookie("logCookie"));
-    console.log(jsonObj);
+    // console.log(jsonObj);
     if (jsonObj.token) {
       $.ajax({
         type: "POST",
-        url: "http://35.167.221.25:8080/api/profileGet",
+        url: "http://54.214.111.32:9004/api/profileGet",
         dataType: "json",
         data: {
           token: jsonObj.token,
@@ -789,8 +1038,9 @@ function showProfile() {
         },
         crossDomain: true
       }).done(function(data) {
-        console.log(data);
+        // console.log(data);
         var getProfile = "";
+        getProfile += "<h1>個人基本資料</h1>";
         getProfile += "<p>姓名： " + data.data.detail[0].uCName + "</p>";
         getProfile += "<p>性別： " + data.data.detail[0].uSex + "</p>";
         getProfile += "<p>生日： " + data.data.detail[0].uBirthD + "</p>";
@@ -798,12 +1048,42 @@ function showProfile() {
         getProfile += "<p>體重： " + data.data.detail[0].uWeight + "</p>";
         $(".showProfile").append(getProfile);
       });
+      $.ajax({
+        type: "POST",
+        url: "http://54.214.111.32:9004/api/profileGetIp",
+        dataType: "json",
+        data: {
+          username: jsonObj.userName,
+          token: jsonObj.token
+        },
+        contentType: "application/x-www-form-urlencoded; charset=utf-8"
+      }).done(function(dataIP) {
+        // console.log(dataIP);
+        var dataColumns = "";
+        dataColumns += "<thead>";
+        dataColumns += "<tr>";
+        dataColumns += "<th data-type='date'>登入日期</th>";
+        dataColumns += "<th>IP 位置</th>";
+        dataColumns += "</tr>";
+        dataColumns += "</thead>";
+        $(".tableListForProfile").footable({
+          columns: $(".tableListForProfile").html(dataColumns),
+          row: dataIP.data.detail.forEach(function(value) {
+            var dataRow = "";
+            var date = value.dateTime.split("T");
+            var time = date[1].split(".000Z")[0];
+            dataRow += "<tr><td>" + date[0] + "</td>";
+            dataRow += "<td>" + value.conreadd.split("::ffff:")[1] + "</td>";
+            dataRow += "</tr>";
+            $(".showDataForIP table").append(dataRow);
+          })
+        });
+      });
     }
   } else {
     window.location.href = "../index.html";
   }
 }
-
 // 會員登出 function
 function userLogOut() {
   $(".logOut").on("click", function() {
@@ -811,8 +1091,6 @@ function userLogOut() {
       expires: -1,
       path: "/"
     });
-    console.log($.cookie("logCookie"));
-    console.log($.removeCookie("logCookie"));
   });
 }
 
@@ -820,7 +1098,7 @@ $(function() {
   userLogOut();
   showProfile();
   getAllSportData();
-  console.log($.cookie("logCookie"));
+  // console.log($.cookie("logCookie"));
   if ($.cookie("logCookie") === "undefined") {
     var stateObj = { test: "123" };
     history.pushState(stateObj, "new Page", "bar.html");

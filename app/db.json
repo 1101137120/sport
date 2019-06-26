@@ -1,8 +1,8 @@
-//http://35.167.221.25:8080/api/profileGet
+//http://54.214.111.32:9004/api/profileGet
 POST KEY MUST HAVE:
 token
 username
-//http://35.167.221.25:8080/api/profileSet 
+//http://54.214.111.32:9004/api/profileSet 
 POST KEY MUST HAVE:
 token
 username
@@ -18,7 +18,7 @@ uWeight
 uRegisteredDate
 uImagePhoto
 uCheck
-//http://35.167.221.25:8080/api/checkToken  
+//http://54.214.111.32:9004/api/checkToken  
 POST KEY MUST HAVE:
 token
 
@@ -30,7 +30,7 @@ token
         "decode": "cmcreborn@gmail.com"
     }
 }
-//http://35.167.221.25:8080/api/login2Server   
+//http://54.214.111.32:9004/api/login2Server   
 
 POST KEY MUST HAVE:
 username
@@ -44,7 +44,7 @@ password
     },
     "result": "true"
 }
-//http://35.167.221.25:8080/signupTemp
+//http://54.214.111.32:9004/signupTemp
 
 POST KEY MUST HAVE:
 username
@@ -81,7 +81,7 @@ email收件後 點選裡面的link後
 ======================================================================================================
 
 廠商
-//  http://35.167.221.25:8080
+//  http://54.214.111.32:9004
 
 /cpDataSet //註冊
 

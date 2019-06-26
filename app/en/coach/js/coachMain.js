@@ -29,7 +29,7 @@ function showProfile() {
     if (coachCookie.token) {
       $.ajax({
         type: "POST",
-        url: "http://35.167.221.25:8080/api/profileGet",
+        url: "http://54.214.111.32:9004/api/profileGet",
         dataType: "json",
         data: {
           token: coachCookie.token,

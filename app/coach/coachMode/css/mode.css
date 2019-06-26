@@ -106,7 +106,7 @@ section {
 
 body {
     line-height: 1;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 ol,
@@ -123,7 +123,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
+    content: "";
     content: none;
 }
 
@@ -161,7 +161,7 @@ reset css over
 }
 
 .logoImg {
-    padding: .5%;
+    padding: 0.5%;
 }
 
 .navbar-right a {
@@ -210,6 +210,10 @@ a:hover {
     display: inline-flex;
 }
 
+.container-fluid {
+    padding-left: 70px;
+}
+
 
 /*
 =======================================================
@@ -224,7 +228,7 @@ a:hover {
 
 label {
     display: inline-block;
-    margin: .5rem 0;
+    margin: 0.5rem 0;
 }
 
 
@@ -232,307 +236,135 @@ label {
 個人資訊頁面 style
 */
 
-.profile {
-    padding: 80px 20px;
-}
-
-.profile h1 {
-    font-size: 30px;
-    font-weight: 500;
+.showProfile h1 {
+    font-size: 32px;
+    padding: 20px 0;
 }
 
 .showProfile {
     font-size: 24px;
-    padding: 40px 30px;
+    padding-top: 70px;
 }
 
 .showProfile p {
-    padding: 20px;
-}
-
-
-/* 
-心跳的 style
-*/
-
-.heart-wrapper {
-    z-index: -1;
-    position: absolute;
-    margin: auto;
-    top: 10px;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 30px;
-    height: 30px;
-    background: #f33;
-    -webkit-animation: pulse 1.4s infinite;
-    -moz-animation: pulse 1.4s infinite;
-    -o-animation: pulse 1.4s infinite;
-    -ms-animation: pulse 1.4s infinite;
-    animation: pulse 1.4s infinite;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.heart-wrapper:after {
-    content: '';
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: -50%;
-    background: #f33;
-    border-radius: 50%;
-}
-
-.heart-wrapper:before {
-    position: absolute;
-    content: '';
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: #f33;
-    left: -50%;
-}
-
-@-moz-keyframes pulse {
-    0% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    50% {
-        -webkit-transform: scale(0.8) rotate(45deg);
-        -moz-transform: scale(0.8) rotate(45deg);
-        -o-transform: scale(0.8) rotate(45deg);
-        -ms-transform: scale(0.8) rotate(45deg);
-        transform: scale(0.8) rotate(45deg);
-    }
-    85% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    90% {
-        -webkit-transform: scale(0.95) rotate(45deg);
-        -moz-transform: scale(0.95) rotate(45deg);
-        -o-transform: scale(0.95) rotate(45deg);
-        -ms-transform: scale(0.95) rotate(45deg);
-        transform: scale(0.95) rotate(45deg);
-    }
-    97% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    100% {
-        -webkit-transform: scale(1) rotate(45deg);
-        -moz-transform: scale(1) rotate(45deg);
-        -o-transform: scale(1) rotate(45deg);
-        -ms-transform: scale(1) rotate(45deg);
-        transform: scale(1) rotate(45deg);
-    }
-}
-
-@-webkit-keyframes pulse {
-    0% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    50% {
-        -webkit-transform: scale(0.8) rotate(45deg);
-        -moz-transform: scale(0.8) rotate(45deg);
-        -o-transform: scale(0.8) rotate(45deg);
-        -ms-transform: scale(0.8) rotate(45deg);
-        transform: scale(0.8) rotate(45deg);
-    }
-    85% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    90% {
-        -webkit-transform: scale(0.95) rotate(45deg);
-        -moz-transform: scale(0.95) rotate(45deg);
-        -o-transform: scale(0.95) rotate(45deg);
-        -ms-transform: scale(0.95) rotate(45deg);
-        transform: scale(0.95) rotate(45deg);
-    }
-    97% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    100% {
-        -webkit-transform: scale(1) rotate(45deg);
-        -moz-transform: scale(1) rotate(45deg);
-        -o-transform: scale(1) rotate(45deg);
-        -ms-transform: scale(1) rotate(45deg);
-        transform: scale(1) rotate(45deg);
-    }
-}
-
-@-o-keyframes pulse {
-    0% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    50% {
-        -webkit-transform: scale(0.8) rotate(45deg);
-        -moz-transform: scale(0.8) rotate(45deg);
-        -o-transform: scale(0.8) rotate(45deg);
-        -ms-transform: scale(0.8) rotate(45deg);
-        transform: scale(0.8) rotate(45deg);
-    }
-    85% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    90% {
-        -webkit-transform: scale(0.95) rotate(45deg);
-        -moz-transform: scale(0.95) rotate(45deg);
-        -o-transform: scale(0.95) rotate(45deg);
-        -ms-transform: scale(0.95) rotate(45deg);
-        transform: scale(0.95) rotate(45deg);
-    }
-    97% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    100% {
-        -webkit-transform: scale(1) rotate(45deg);
-        -moz-transform: scale(1) rotate(45deg);
-        -o-transform: scale(1) rotate(45deg);
-        -ms-transform: scale(1) rotate(45deg);
-        transform: scale(1) rotate(45deg);
-    }
-}
-
-@keyframes pulse {
-    0% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    50% {
-        -webkit-transform: scale(0.8) rotate(45deg);
-        -moz-transform: scale(0.8) rotate(45deg);
-        -o-transform: scale(0.8) rotate(45deg);
-        -ms-transform: scale(0.8) rotate(45deg);
-        transform: scale(0.8) rotate(45deg);
-    }
-    85% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    90% {
-        -webkit-transform: scale(0.95) rotate(45deg);
-        -moz-transform: scale(0.95) rotate(45deg);
-        -o-transform: scale(0.95) rotate(45deg);
-        -ms-transform: scale(0.95) rotate(45deg);
-        transform: scale(0.95) rotate(45deg);
-    }
-    97% {
-        -webkit-transform: scale(0.9) rotate(45deg);
-        -moz-transform: scale(0.9) rotate(45deg);
-        -o-transform: scale(0.9) rotate(45deg);
-        -ms-transform: scale(0.9) rotate(45deg);
-        transform: scale(0.9) rotate(45deg);
-    }
-    100% {
-        -webkit-transform: scale(1) rotate(45deg);
-        -moz-transform: scale(1) rotate(45deg);
-        -o-transform: scale(1) rotate(45deg);
-        -ms-transform: scale(1) rotate(45deg);
-        transform: scale(1) rotate(45deg);
-    }
-}
-
-
-/* 
-每個運動資訊的 style
-*/
-
-.chartStyle {
-    position: relative;
-}
-
-#aDist {
-    display: inline-block;
-}
-
-#fSpeed {
-    position: absolute !important;
-}
-
-.heart {
-    position: absolute;
-    top: 0;
-    left: 110px;
-}
-
-.heart span {
-    color: #fff;
-}
-
-.userData {
-    text-align: center;
-    font-size: 24px;
-    line-height: 1.2em;
-}
-
-.heart-wrapper {
-    display: none;
-}
-
-h1 {
-    font-size: 28px;
-    border-bottom: 1px solid #656565;
-    padding-bottom: 20px;
-}
-
-.whoInRoom p {
     padding: 10px;
 }
 
-@media (max-width: 1400px) {
-    #fSpeed {
-        padding-left: 100px;
-    }
+.tableListForProfile:hover {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.showDataForIP {
+    padding-top: 70px;
+}
+
+.table {
+    border: 1px solid #f5f5f5;
+}
+
+
+/*
+開房後的資訊條
+*/
+
+.userRanking {
+    padding: 70px 0 20px 0;
+}
+
+.titleText {
+    padding: 70px 0 20px 0;
+}
+
+.tableStyle {
+    background-color: #fff;
+    position: fixed;
+    z-index: 99;
+    width: 1000px;
+}
+
+.transitionForTable {
+    box-shadow: 5px 5px 5px #888888;
+}
+
+
+/* 
+左邊清單的 icon style
+*/
+
+#leftNavIcon {
+    position: fixed;
+    top: 150px;
+    text-align: center;
+    background-color: #656565;
+    z-index: 1;
+}
+
+#leftNavIcon ul {
+    display: flex;
+    flex-direction: column;
+}
+
+#leftNavIcon ul li {
+    padding: 10px 0;
+}
+
+#leftNavIcon a {
+    color: #333;
+}
+
+#leftNavIcon i:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+#startSport input {
+    background-color: #656565;
+    color: #333;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+#startSport input:hover {
+    color: #fff;
+}
+
+#startSport .btn {
+    padding: 0;
+    line-height: 0.8em;
+}
+
+.tooltip-inner {
+    white-space: nowrap;
+    max-width: none;
+}
+
+
+/* 
+notificationBtn style
+*/
+
+.notificationBtn {
+    display: flex;
+    justify-content: space-around;
 }
 
 @media (max-width: 1200px) {
-    #fSpeed {
-        padding-left: 80px;
+    .tableStyle {
+        width: 910px;
+    }
+}
+
+@media (max-width: 992px) {
+    .tableStyle {
+        width: 710px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tableStyle {
+        width: 93%;
     }
 }

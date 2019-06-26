@@ -79,14 +79,13 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
 
 /* HTML5 display-role reset for older browsers */
 
@@ -101,44 +100,42 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
-    font-family: 'Roboto', sans-serif;
+  line-height: 1;
+  font-family: "Roboto", sans-serif;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: "";
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
 
 /*
 =======================================================
 reset css
 =======================================================
  */
-
 
 /*
 =======================================================
@@ -147,55 +144,54 @@ reset css
  */
 
 .container {
-    max-width: 1040px;
-    padding: 0 20px;
+  max-width: 1040px;
+  padding: 0 20px;
 }
 
 .navbar-default {
-    background-color: #6b767e;
-    /*background-color: #ad8541;*/
-    border: none;
+  background-color: #6b767e;
+  /*background-color: #ad8541;*/
+  border: none;
 }
 
 .logoImg img {
-    max-width: 100%;
-    width: 157px;
-    height: 39px;
+  max-width: 100%;
+  width: 157px;
+  height: 39px;
 }
 
 .logoImg {
-    padding: .5%;
+  padding: 0.5%;
 }
 
 .logoImg ul {
-    display: inline-flex;
+  display: inline-flex;
 }
 
 .navbar-fixed-top .logoImg li:before {
-    content: "/";
-    color: #a0a9b0;
-    padding: 0 13px 0 7px;
-    display: inline-block;
-    vertical-align: middle;
+  content: "/";
+  color: #a0a9b0;
+  padding: 0 13px 0 7px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .navbar-right a {
-    color: #fff;
+  color: #fff;
 }
 
 a:focus,
 a:hover {
-    color: #eeeae5;
-    text-decoration: none;
-    outline: none;
+  color: #eeeae5;
+  text-decoration: none;
+  outline: none;
 }
 
 .navbar-right {
-    font-size: 18px;
-    line-height: 12px;
-    font-weight: 300;
+  font-size: 18px;
+  line-height: 12px;
+  font-weight: 300;
 }
-
 
 /*
 =======================================================
@@ -203,7 +199,6 @@ a:hover {
 =======================================================
  */
 
-
 /*
 =======================================================
 登入的modal
@@ -211,93 +206,91 @@ a:hover {
  */
 
 .login-facebook {
-    width: 100%;
-    padding: 15px 17px;
-    color: #eee;
-    margin: 7px 0;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    border-radius: 1px;
-    cursor: pointer;
+  width: 100%;
+  padding: 15px 17px;
+  color: #eee;
+  margin: 7px 0;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  cursor: pointer;
 }
 
 .login-facebook:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .login-facebook {
-    background: #3b5998;
+  background: #3b5998;
 }
 
 .login-facebook span {
-    font-weight: normal;
-    font-size: 17px;
-    -webkit-text-transform: capitalize;
-    -moz-text-transform: capitalize;
-    -ms-text-transform: capitalize;
-    -o-text-transform: capitalize;
-    text-transform: capitalize;
+  font-weight: normal;
+  font-size: 17px;
+  -webkit-text-transform: capitalize;
+  -moz-text-transform: capitalize;
+  -ms-text-transform: capitalize;
+  -o-text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .login-facebook i {
-    margin-right: 10px;
-    font-size: 17px;
+  margin-right: 10px;
+  font-size: 17px;
 }
 
 .loginColor {
-    background-color: #6b767e;
-    color: #fff;
+  background-color: #6b767e;
+  color: #fff;
 }
 
 .btn.loginColor:focus {
-    background-color: #6b767e;
-    color: #fff;
-    outline: none;
+  background-color: #6b767e;
+  color: #fff;
+  outline: none;
 }
 
 .btn.loginColor:hover {
-    background-color: #fff;
-    color: #6b767e;
-    font-weight: 600;
-    border: 1px solid #6b767e;
-    outline: none;
+  background-color: #fff;
+  color: #6b767e;
+  font-weight: 600;
+  border: 1px solid #6b767e;
+  outline: none;
 }
 
 .or {
-    text-align: center;
-    display: block;
-    font-size: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  text-align: center;
+  display: block;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .errorMsg,
 .errorPassword {
-    color: red;
-    padding-top: 10px;
+  color: red;
+  padding-top: 10px;
 }
 
 .errorMsg a:hover {
-    color: #337ab7;
+  color: #337ab7;
 }
 
 label {
-    display: inline-block;
-    margin-bottom: .5rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
 #login .modal-footer {
-    text-align: left;
-    padding: 0;
+  text-align: left;
+  padding: 0;
 }
-
 
 /*
 =======================================================
 登入的modal
 =======================================================
  */
-
 
 /*
 =======================================================
@@ -307,25 +300,23 @@ label {
 
 .signUpMsg,
 .taxIdMsg {
-    padding: 8px 0 0 5px;
-    color: red;
+  padding: 8px 0 0 5px;
+  color: red;
 }
 
 .signUpDone {
-    font-size: 22px;
-    color: green;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  font-size: 22px;
+  color: green;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
-
 
 /*
 =======================================================
 註冊的modal
 =======================================================
  */
-
 
 /*
 =======================================================
@@ -334,15 +325,14 @@ label {
  */
 
 .mainBg {
-    background: url(../images/david-marcu-69433.jpg) center right fixed no-repeat;
-    -moz-background-size: cover;
-    background-size: cover;
-    background-position: 40% 70%;
-    width: 100%;
-    height: 100%;
-    opacity: .8;
+  background: url(../images/david-marcu-69433.jpg) center right fixed no-repeat;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: 40% 70%;
+  width: 100%;
+  height: 100vh;
+  opacity: 0.8;
 }
-
 
 /*
 =======================================================
@@ -350,19 +340,19 @@ label {
 =======================================================
 */
 
-
 /*
 廠商的 style
 */
 
-@media(max-width: 768px) {
-    .mainBg {
-        background: url(../images/david-marcu-69433.jpg) center center fixed no-repeat;
-        -moz-background-size: cover;
-        background-position: 23%;
-        background-size: 178% 100%;
-        width: 100%;
-        height: 100%;
-        opacity: .8;
-    }
+@media (max-width: 768px) {
+  .mainBg {
+    background: url(../images/david-marcu-69433.jpg) center center fixed
+      no-repeat;
+    -moz-background-size: cover;
+    background-position: 23%;
+    background-size: 178% 100%;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.8;
+  }
 }

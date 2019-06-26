@@ -106,7 +106,7 @@ section {
 
 body {
     line-height: 1;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     overflow-x: hidden;
 }
 
@@ -124,7 +124,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
+    content: "";
     content: none;
 }
 
@@ -134,7 +134,7 @@ table {
 }
 
 .font {
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-weight: 600;
 }
 
@@ -144,6 +144,56 @@ table {
 reset css
 =======================================================
  */
+
+.dygraph-legend {
+    position: absolute;
+    left: 444px !important;
+    top: -30px !important;
+    font-size: 14px;
+    z-index: 10;
+    width: 250px;
+    background: white;
+    line-height: normal;
+    text-align: left;
+    overflow: hidden;
+}
+
+
+/* 
+ loading 時畫面的動畫
+ */
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 100px auto;
+    background-color: #333;
+    border-radius: 100%;
+    -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+    animation: sk-scaleout 1s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+    }
+}
 
 
 /*
@@ -169,7 +219,7 @@ reset css
 }
 
 .logoImg {
-    padding: .5%;
+    padding: 0.5%;
 }
 
 .navbar-right a {
@@ -231,22 +281,22 @@ a:hover {
 =======================================================
  */
 
-.profile {
-    padding: 10%;
+i {
+    cursor: pointer;
 }
 
-.profile h1 {
-    font-size: 30px;
-    font-weight: 500;
+.showProfile h1 {
+    font-size: 32px;
+    padding: 20px 0;
 }
 
 .showProfile {
     font-size: 24px;
-    padding: 5%;
+    padding-top: 70px;
 }
 
 .showProfile p {
-    padding: 3%;
+    padding: 10px;
 }
 
 #chart-container {
@@ -256,6 +306,17 @@ a:hover {
 
 .container-fluid {
     margin: 30px 0;
+}
+
+.showDataForIP {
+    padding-top: 70px;
+}
+
+.tableListForProfile:hover {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    box-shadow: 5px 5px 5px #888888;
 }
 
 

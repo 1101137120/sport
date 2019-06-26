@@ -11,7 +11,7 @@ function getCookie() {
 進入畫面自動取得年紀錄
 =======================================================
 */
-var url = "http://35.167.221.25:8080/";
+var url = "http://54.214.111.32:9004/";
 //取得整年份的運動資料
 function getAllData(cb) {
   var showCookie = getCookie();
@@ -787,7 +787,7 @@ function showProfile() {
     if (jsonObj.token) {
       $.ajax({
         type: "POST",
-        url: "http://35.167.221.25:8080/api/profileGet",
+        url: "http://54.214.111.32:9004/api/profileGet",
         dataType: "json",
         data: {
           token: jsonObj.token,

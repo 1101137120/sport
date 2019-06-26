@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="zh">
 
 <head>
@@ -6,6 +7,8 @@
     <title>個人資料</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/footable.standalone.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -39,16 +42,21 @@
     </header>
     <section class="container">
         <div class="row">
-            <div class="col-md-12 profile">
-                <h1>個人基本資料</h1>
+            <div class="col-md-4">
                 <div class="showProfile"></div>
+            </div>
+            <div class="col-md-8 dataTableTranition">
+                <div class="showDataForIP">
+                    <table class="table tableListForProfile" data-paging="true" data-filtering="true" data-sorting="true"></table>
+                </div>
             </div>
         </div>
     </section>
     <script src="../js/jquery-1.9.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/index.js?20171003"></script>
     <script src="js/jquery.cookie.js"></script>
+    <script src="../js/footable.min.js"></script>
 </body>
 
 </html>

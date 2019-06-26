@@ -79,14 +79,13 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
 
 /* HTML5 display-role reset for older browsers */
 
@@ -101,37 +100,36 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
-    font-family: 'Roboto', sans-serif;
+  line-height: 1;
+  font-family: "Roboto", sans-serif;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: "";
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
 
 /*
 =======================================================
@@ -139,6 +137,29 @@ reset css
 =======================================================
  */
 
+/* 
+讓使用者進去選平台的 style 
+*/
+
+.titleForText {
+  padding: 80px 0 20px 0;
+}
+
+figure.effect-ruby {
+  background-color: aliceblue;
+}
+
+figure.effect-ruby:hover h2 {
+  color: #000;
+}
+
+figure img {
+  max-width: 100%;
+}
+
+.imgHeight {
+  height: 218px;
+}
 
 /*
 =======================================================
@@ -147,64 +168,62 @@ reset css
  */
 
 .container {
-    max-width: 1040px;
-    padding: 0 20px;
+  max-width: 1040px;
+  /* padding: 0 20px; */
 }
 
 .navbar-default {
-    background-color: #6b767e;
-    border: none;
+  background-color: #6b767e;
+  border: none;
 }
 
 .logoImg img {
-    max-width: 100%;
-    width: 157px;
-    height: 39px;
+  max-width: 100%;
+  width: 157px;
+  height: 39px;
 }
 
 .logoImg,
 .navBarStyle {
-    padding: .5%;
+  padding: 0.5%;
 }
 
 .logoImg ul,
 .navBarStyle ul {
-    display: inline-flex;
+  display: inline-flex;
 }
 
 .navbar-fixed-top .logoImg li:before,
 .navbar-fixed-top .navBarStyle li:before {
-    content: "/";
-    color: #a0a9b0;
-    padding: 0 13px 0 7px;
-    display: inline-block;
-    vertical-align: middle;
+  content: "/";
+  color: #a0a9b0;
+  padding: 0 13px 0 7px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .navbar-right a {
-    color: #fff;
+  color: #fff;
 }
 
 a:focus,
 a:hover {
-    color: #fff;
-    text-decoration: none;
-    outline: none;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
 }
 
 .navbar-right {
-    font-size: 18px;
-    line-height: 12px;
-    font-weight: 300;
+  font-size: 18px;
+  line-height: 12px;
+  font-weight: 300;
 }
-
 
 /*
 =======================================================
 標頭結束
 =======================================================
  */
-
 
 /*
 =======================================================
@@ -213,143 +232,141 @@ a:hover {
  */
 
 #login .modal-footer {
-    text-align: left;
-    padding: 0;
+  text-align: left;
+  padding: 0;
 }
 
 .login-facebook {
-    width: 100%;
-    padding: 10px 15px;
-    color: #eee;
-    margin: 7px 0;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px 15px;
+  color: #eee;
+  margin: 7px 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .login-facebook:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .login-facebook {
-    background: #3b5998;
+  background: #3b5998;
 }
 
 .login-facebook span {
-    font-weight: normal;
-    font-size: 17px;
-    -webkit-text-transform: capitalize;
-    -moz-text-transform: capitalize;
-    -ms-text-transform: capitalize;
-    -o-text-transform: capitalize;
-    text-transform: capitalize;
+  font-weight: normal;
+  font-size: 17px;
+  -webkit-text-transform: capitalize;
+  -moz-text-transform: capitalize;
+  -ms-text-transform: capitalize;
+  -o-text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .login-facebook i {
-    margin-right: 10px;
-    font-size: 17px;
+  margin-right: 10px;
+  font-size: 17px;
 }
 
 .loginColor {
-    background-color: #6b767e;
-    color: #fff;
+  background-color: #6b767e;
+  color: #fff;
 }
 
 .btn.loginColor:focus {
-    background-color: #6b767e;
-    color: #fff;
-    outline: none;
+  background-color: #6b767e;
+  color: #fff;
+  outline: none;
 }
 
 .btn.loginColor:hover {
-    background-color: #fff;
-    color: #6b767e;
-    font-weight: 600;
-    border: 1px solid #6b767e;
-    outline: none;
+  background-color: #fff;
+  color: #6b767e;
+  font-weight: 600;
+  border: 1px solid #6b767e;
+  outline: none;
 }
 
 .btn {
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .btn {
-    width: 100%;
+  width: 100%;
 }
 
 .or {
-    padding: 0 10px;
-    font-size: 16px;
-    font-weight: 700;
+  padding: 0 10px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .outsideOrLine {
-    display: flex;
-    align-items: center;
-    padding-top: 10px;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
 }
 
 .outsideOrLine .orLine {
-    flex: 1 0 auto;
-    min-width: 1px;
+  flex: 1 0 auto;
+  min-width: 1px;
 }
 
 .orLine {
-    border-top: 1px solid #6b767e;
-    height: 1px;
+  border-top: 1px solid #6b767e;
+  height: 1px;
 }
 
 .errorMsg,
 .errorPassword {
-    color: red;
-    padding-top: 10px;
+  color: red;
+  padding-top: 10px;
 }
 
 .errorMsg a:hover {
-    color: #337ab7;
+  color: #337ab7;
 }
 
 #firstLabel {
-    margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 label {
-    display: inline-block;
-    margin-bottom: .5rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
 .forgetPW {
-    padding: 15px 10px 0 10px;
-    text-align: center;
+  padding: 15px 10px 0 10px;
+  text-align: center;
 }
 
 .forgetPW a {
-    color: #1376d7;
+  color: #1376d7;
 }
 
 .goSignUp {
-    text-align: center;
+  text-align: center;
 }
 
 .goSignUp a,
 .goLogIn a {
-    color: #1376d7;
+  color: #1376d7;
 }
 
 .goLogIn {
-    text-align: center;
+  text-align: center;
 }
-
 
 /*
 =======================================================
 登入的modal
 =======================================================
  */
-
 
 /*
 =======================================================
@@ -358,85 +375,109 @@ label {
  */
 
 .signUpMsg {
-    padding: 8px 0 0 5px;
-    color: red;
+  padding: 8px 0 0 5px;
+  color: red;
 }
 
 .signUpDone {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-.cp-round{
-    width: 24px;
-    height: 24px;
+.cp-round {
+  width: 24px;
+  height: 24px;
 }
 
 .cp-round:before {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .cp-round:after {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
-    /*
+
+/*
 =======================================================
 註冊的modal
 =======================================================
  */
-    /*
+
+/*
 =======================================================
 輸入個人資料的 modal
 =======================================================
  */
+
 #uSexBtn {
-    display: flex;
+  display: flex;
 }
+
 #uSexBtn label {
-    width: 30%;
-    border-radius: 5px;
-    margin-right: 5px;
+  width: 30%;
+  border-radius: 5px;
+  margin-right: 5px;
 }
-    /*
+
+/*
 =======================================================
 輸入個人資料的 modal
 =======================================================
  */
-    /*
+
+/*
 =======================================================
 首頁圖
 =======================================================
  */
+
 .mainBg {
-    background: url(../images/start_bg_web.jpg) center right fixed no-repeat;
-    -moz-background-size: cover;
-    background-size: cover;
-    background-position: 40% 70%;
-    width: 100%;
-    height: 100%;
+  background: url(../images/start_bg_web.jpg) center right fixed no-repeat;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: 40% 70%;
+  width: 100%;
+  height: 100vh;
 }
 
 .mainBgForCoach {
-    background: url(../images/dimon.jpg) center right fixed no-repeat;
-    -moz-background-size: cover;
-    background-size: cover;
-    background-position: 40% 70%;
-    width: 100%;
-    height: 100%;
+  background: url(../images/dimon.jpg) center right fixed no-repeat;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: 40% 70%;
+  width: 100%;
+  height: 100vh;
 }
+
 /*
 =======================================================
 首頁圖
 =======================================================
 */
-@media(max-width: 768px) {
-    .mainBg {
-        background: url(../images/start_bg_web.jpg) center center fixed no-repeat;
-        -moz-background-size: cover;
-        background-position: 23%;
-        background-size: 178% 100%;
-        width: 100%;
-        height: 100%;
-    }
+
+@media (max-width: 1200px) {
+  .imgHeight {
+    height: 203px;
+  }
+}
+
+@media (max-width: 991px) {
+  .imgHeight {
+    height: auto;
+  }
+  .colXsPbottom {
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainBg {
+    background: url(../images/start_bg_web.jpg) center center fixed no-repeat;
+    -moz-background-size: cover;
+    background-position: 23%;
+    background-size: 178% 100%;
+    width: 100%;
+    height: 100vh;
+  }
 }

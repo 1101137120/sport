@@ -79,14 +79,13 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
 
 /* HTML5 display-role reset for older browsers */
 
@@ -101,49 +100,47 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
-    font-family: 'Roboto', sans-serif;
+  line-height: 1;
+  font-family: "Roboto", sans-serif;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: "";
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .font {
-    font-family: 'Roboto';
-    font-weight: 600;
+  font-family: "Roboto";
+  font-weight: 600;
 }
-
 
 /*
 =======================================================
 reset css
 =======================================================
  */
-
 
 /*
 =======================================================
@@ -152,70 +149,69 @@ reset css
  */
 
 .container {
-    max-width: 1040px;
-    padding: 0 20px;
+  max-width: 1040px;
+  padding: 0 20px;
 }
 
 .navbar-default {
-    background-color: #6b767e;
-    /*background-color: #ad8541;*/
+  background-color: #6b767e;
+  /*background-color: #ad8541;*/
 }
 
 .logoImg img {
-    max-width: 100%;
-    width: 157px;
-    height: 39px;
+  max-width: 100%;
+  width: 157px;
+  height: 39px;
 }
 
 .logoImg {
-    padding: .5%;
+  padding: 0.5%;
 }
 
 .navbar-right a {
-    color: #fff;
+  color: #fff;
 }
 
 a:focus,
 a:hover {
-    color: #eeeae5;
-    text-decoration: none;
-    outline: none;
+  color: #eeeae5;
+  text-decoration: none;
+  outline: none;
 }
 
 .navbar-right {
-    font-size: 18px;
-    line-height: 12px;
-    font-weight: 300;
+  font-size: 18px;
+  line-height: 12px;
+  font-weight: 300;
 }
 
 .dropdown-menu li {
-    text-align: center;
+  text-align: center;
 }
 
 .dropdown-menu {
-    margin: 6px 0;
+  margin: 6px 0;
 }
 
 .nav-right {
-    display: inline-block;
-    color: #fff;
+  display: inline-block;
+  color: #fff;
 }
 
 .nav-right li {
-    display: inline;
-    padding: 0 25px;
-    cursor: pointer;
+  display: inline;
+  padding: 0 25px;
+  cursor: pointer;
 }
 
 .nav-right li:hover {
-    color: #eeeae5;
+  color: #eeeae5;
 }
 
 .navbar-default .navbar-text {
-    color: #777;
-    display: inline-flex;
+  color: #777;
+  display: inline-flex;
 }
-
 
 /*
 =======================================================
@@ -223,43 +219,37 @@ a:hover {
 =======================================================
 */
 
-
 /*
 =======================================================
 主畫面
 =======================================================
  */
 
-.profile {
-    padding: 10%;
-}
-
-.profile h1 {
-    font-size: 30px;
-    font-weight: 500;
+.showProfile h1 {
+  font-size: 32px;
+  padding: 20px 0;
 }
 
 .showProfile {
-    font-size: 24px;
-    padding: 5%;
+  font-size: 24px;
+  padding-top: 70px;
 }
 
 .showProfile p {
-    padding: 3%;
+  padding: 10px;
+  font-size: 20px;
 }
 
 #chart-container {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
-
 
 /*
 =======================================================
 主畫面
 =======================================================
  */
-
 
 /*
 =======================================================
@@ -272,22 +262,20 @@ a:hover {
 .showMonth,
 .showYear,
 .myList {
-    font-size: 32px;
-    font-weight: 500;
-    padding: 20px;
+  font-size: 32px;
+  font-weight: 500;
+  padding: 20px;
 }
 
 .showDayMessage .active:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
-
 
 /*
 =======================================================
 年紀錄主畫面
 =======================================================
  */
-
 
 /*
 =======================================================
@@ -296,9 +284,8 @@ a:hover {
  */
 
 .showDate {
-    display: inline-flex;
+  display: inline-flex;
 }
-
 
 /*
 =======================================================
@@ -307,69 +294,68 @@ a:hover {
  */
 
 .table {
-    border: 1px solid #f5f5f5;
+  border: 1px solid #f5f5f5;
 }
 
 .mouseOver {
-    padding: 0 50px;
+  padding: 0 50px;
 }
-
 
 /*
 廠商的 style
 */
 
 .showLoader {
-    margin-top: 180px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  margin-top: 180px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .showStatusText {
-    padding: 80px 50px 10px 50px;
-    font-size: 32px;
+  padding: 80px 50px 20px 20px;
+  font-size: 32px;
 }
 
 #showTableData h1 {
-    margin-top: 80px;
-    font-size: 30px;
-    padding: 15px 20px;
+  margin-top: 80px;
+  font-size: 30px;
+  padding: 15px 20px;
 }
 
 .modal-body h2 {
-    padding: 15px 0;
+  padding: 15px 0;
 }
 
 #statusData .modal-body {
-    height: 500px;
-    overflow: auto;
+  height: 500px;
+  overflow: auto;
 }
 
 #errorStatus {
-    color: red;
+  color: red;
 }
 
 .footable .btn:focus,
 .footable .btn:hover {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 @media (min-width: 992px) {
-    .modal-lg {
-        width: 900px;
-    }
+  .modal-lg {
+    width: 900px;
+  }
 }
 
 @media (max-width: 768px) {
-    .showDate,
-    #myList {
-        font-size: 22px;
-        font-weight: 500;
-        padding: 6% 2% 2% 2%;
-    }
-    .profile {
-        padding: 20% 10% 10% 10%;
-    }
+  .showDate,
+  #myList {
+    font-size: 22px;
+    font-weight: 500;
+    padding: 6% 2% 2% 2%;
+  }
+  .profile {
+    padding: 20% 10% 10% 10%;
+  }
 }

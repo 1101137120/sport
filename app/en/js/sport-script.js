@@ -59,7 +59,7 @@ $('#resetPW').submit(function () {
         $
             .ajax({
                 type: 'POST',
-                url: 'http://35.167.221.25:8080/pcReset',
+                url: 'http://54.214.111.32:9004/pcReset',
                 data: {
                     username: arrData.username,
                     token: arrData.token,

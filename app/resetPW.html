@@ -1,119 +1,128 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>重新設定密碼</title>
+    <title>Reset password</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta http-equiv="Cache-Control" content="no-cache" />
     <style>
         /*
 =======================================================
 標頭開始
 =======================================================
  */
-
-.container {
-    max-width: 1040px;
-    padding: 0 20px;
-}
-
-.navbar-default {
-    background-color: #6b767e;
-    /*background-color: #ad8541;*/
-}
-
-.logoImg img {
-    max-width: 100%;
-    width: 157px;
-    height: 39px;
-}
-
-.logoImg {
-    padding: .5%;
-}
-
-.navbar-right a {
-    color: #fff;
-}
-
-a:focus,
-a:hover {
-    color: #eeeae5;
-    text-decoration: none;
-    outline: none;
-}
-
-.navbar-right {
-    font-size: 18px;
-    line-height: 12px;
-    font-weight: 300;
-}
-
-.dropdown-menu li {
-    text-align: center;
-}
-
-.dropdown-menu {
-    margin: 6px 0;
-}
-
-.nav-right {
-    display: inline-block;
-    color: #fff;
-}
-
-.nav-right li {
-    display: inline;
-    padding: 0 25px;
-    cursor: pointer;
-}
-
-.nav-right li:hover {
-    color: #eeeae5;
-}
-
-.navbar-default .navbar-text {
-    color: #777;
-    display: inline-flex;
-}
-
-
-/*
+        
+        .container {
+            max-width: 1040px;
+            padding: 0 20px;
+        }
+        
+        .navbar-default {
+            background-color: #6b767e;
+            /*background-color: #ad8541;*/
+        }
+        
+        .logoImg img {
+            max-width: 100%;
+            width: 157px;
+            height: 39px;
+        }
+        
+        .logoImg {
+            padding: .5%;
+        }
+        
+        .navbar-right a {
+            color: #fff;
+        }
+        
+        a:focus,
+        a:hover {
+            color: #eeeae5;
+            text-decoration: none;
+            outline: none;
+        }
+        
+        .navbar-right {
+            font-size: 18px;
+            line-height: 12px;
+            font-weight: 300;
+        }
+        
+        .dropdown-menu li {
+            text-align: center;
+        }
+        
+        .dropdown-menu {
+            margin: 6px 0;
+        }
+        
+        .nav-right {
+            display: inline-block;
+            color: #fff;
+        }
+        
+        .nav-right li {
+            display: inline;
+            padding: 0 25px;
+            cursor: pointer;
+        }
+        
+        .nav-right li:hover {
+            color: #eeeae5;
+        }
+        
+        .navbar-default .navbar-text {
+            color: #777;
+            display: inline-flex;
+        }
+        /*
 =======================================================
 標頭結束
 =======================================================
  */
-    body{
-        font-family: '微軟正黑體';
-    }
-    .col{
-        width: 420px;
-        text-align: center;
-        margin: 0 auto;
-    }
-    .col h1{
-        padding: 70px 0 10px 0;
-    }
-    .form-group{
-        padding: 10px 0;
-    }
-    .form-group:nth-child(1){
-        width: 50%;
-        margin: 0 auto;
-    }
-    .modal-footer{
-        text-align:left;
-    }
+        
+        body {
+            font-family: '微軟正黑體';
+        }
+        
+        .col {
+            width: 420px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .col h1 {
+            padding: 70px 0 10px 0;
+        }
+        
+        .form-group {
+            padding: 10px 0;
+        }
+        
+        .form-group:nth-child(1) {
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        .modal-footer {
+            text-align: left;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 logoImg">
-                        <a href="index.html"><img src="images/logo_white.png" alt="首頁logo"></a>
+                        <a href="index.html">
+                            <img src="images/logo_white.png" alt="首頁logo">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -122,14 +131,14 @@ a:hover {
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>請輸入新的密碼</h1>
+                <h1>Please enter a new password</h1>
                 <form role="form" id="resetPW">
                     <div class="form-group">
                         <input type="password" class="form-control" name="password" id="newPassword" placeholder="Password" />
                         <div class="errorPasswordText"></div>
                     </div>
                     <div class="form-group">
-                        <input class="btn" type="submit" value="提交">
+                        <input class="btn" type="submit" value="submit">
                     </div>
                 </form>
             </div>
@@ -137,6 +146,15 @@ a:hover {
     </div>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/sport-script.js?20170810v2"></script>
+    <!--<script src="js/sport-script.js?20170810v2"></script> -->
+    <script>
+        var script = document.createElement('script');
+        script.onload = function() {
+
+        };
+        script.src = "js/sport-script.js?" + (new Date());
+        document.getElementsByTagName('head')[0].appendChild(script);
+    </script>
 </body>
+
 </html>

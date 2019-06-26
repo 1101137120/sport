@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>教練個人資訊</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/footable.standalone.min.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/csspin-round.css">
-    <link rel="stylesheet" type="text/css" href="css/mode.css">
+    <link rel="stylesheet" href="../css/csspin-round.css">
+    <link rel="stylesheet" type="text/css" href="css/mode.css?20171003">
 </head>
 
 <body>
@@ -41,18 +42,27 @@
     </header>
     <section class="container">
         <div class="row">
-            <div class="col-md-12 profile">
-                <h1>教練個人資訊</h1>
+            <div class="col-md-4">
                 <div class="showProfile"></div>
+            </div>
+            <div class="col-md-8 dataTableTranition">
+                <div class="showDataForIP">
+                    <table class="table tableListForProfile" data-paging="true" data-filtering="true" data-sorting="true"></table>
+                </div>
             </div>
         </div>
     </section>
-
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://vizjs.org/viz.v1.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js"></script>
     <script src="http://35.167.221.25:3005/socket.io/socket.io.js"></script>
     <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="../js/notyf.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="../js/coachMain.js"></script>
-    <script src="/js/jquery.cookie.js"></script>
+    <script src="../js/footable.min.js"></script>
+    <script src="../js/coachMain.js?20171003"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 </body>
 
 </html>

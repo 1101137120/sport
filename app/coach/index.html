@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/csspin-round.css">
+    <link rel="stylesheet" href="../css/csspin-round.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -28,7 +28,7 @@
             </div>
         </nav>
     </header>
-<!-- 
+    <!-- 
 ============================================================================
 註冊
 ============================================================================
@@ -77,7 +77,7 @@
         </form>
     </section>
 
-<!-- 
+    <!-- 
 ============================================================================
 登入
 ============================================================================
@@ -92,7 +92,7 @@
                             <h2 class="modal-title text-center" id="myModalLabelLogIn">登入您的帳戶！</h2>
                         </div>
                         <div class="modal-body">
-                            <div class="login-facebook text-left">
+                            <!-- <div class="login-facebook text-left">
                                 <i class="fa fa-facebook"></i>
                                 <span>使用 Facebook 繼續</span>
                             </div>
@@ -100,7 +100,7 @@
                                 <div class="orLine"></div>
                                 <div class="or"> OR </div>
                                 <div class="orLine"></div>
-                            </div>
+                            </div> -->
                             <div class="errorMsg"></div>
                             <div class="form-group">
                                 <label id="firstLabel" for="">email：</label>
@@ -128,20 +128,23 @@
         </form>
     </section>
 
-<!-- 
+    <!-- 
 ============================================================================
 個人資料
 ============================================================================
 -->
     <section>
         <form role="form" id="informationForm">
-            <div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="myModalLabelProfile">
+            <div class="modal fade" id="information" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabelProfile">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h2 class="modal-title text-center" id="myModalLabelProfile">Information</h2>
                         </div>
                         <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="uCName" id="uCName" placeholder="姓名" />
+                            </div>
                             <div class="form-group">
                                 <input type="number" class="form-control" name="uHeight" id="uHeight" placeholder="身高" />
                             </div>
@@ -151,6 +154,9 @@
                             <div class="form-group">
                                 <input type="number" class="form-control" name="uAge" id="uAge" placeholder="年齡" />
                                 <div class="errorMsg"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control" name="uBirthday" id="uBirthday" placeholder="1990-12-31" />
                             </div>
                             <div id="uSexBtn" class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-primary">
@@ -171,12 +177,12 @@
             </div>
         </form>
     </section>
-<!-- 
+    <!-- 
 ============================================================================
 個人資料
 ============================================================================
 -->
-<!-- 
+    <!-- 
 ============================================================================
 忘記密碼
 ============================================================================
@@ -208,14 +214,15 @@
             </div>
         </form>
     </section>
-<!-- 
+    <!-- 
 ============================================================================
 忘記密碼
 ============================================================================
 -->
-    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="../js/jquery-1.9.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="js/coachLogin.js"></script>
-    <script src="/js/jquery.cookie.js"></script>
+    <script src="js/coachLogin.js?20170928"></script>
+    <script src="../js/jquery.cookie.js"></script>
 </body>
+
 </html>
